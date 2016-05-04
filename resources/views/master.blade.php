@@ -45,6 +45,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script src={{ asset('csi.js-include_html/csi.min.js') }}></script>
 	<script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.css">
 	<script src="jscolor.js"></script>
 	<!--new-->
 
@@ -343,6 +344,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<?php else: ?>
 
 				<li><a class="color" href="{{url('categories')}}">Categories</a></li>
+				<li><a class="color3" href="{{url('a_customlist')}}">Customized Request</a></li>
 				<li><a class="color3" href="{{'/trending'}}">Trending</a></li>
 				<li><a class="color5" href="{{'/trending'}}">About Us</a></li>
 				<li ><a class="color6" href="{{'/trending'}}">Contact Us</a></li>

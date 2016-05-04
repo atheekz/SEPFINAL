@@ -332,7 +332,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <?php if ((Session::get('facebook'))=='true'): ?>
 
                         <li><a class="color" href="{{url('categories')}}">Categories</a></li>
-                        <li><a class="color3" href="{{url('custom_cat')}}">Customized Request</a></li>
+                        <li><a class="color3" href="{{url('a_customlist')}}">Customized Request</a></li>
                         <li><a class="color3" href="{{'trending'}}">Trending</a></li>
                         <li><a class="color4" href="{{'latest'}}">Latest</a></li>
                         <li><a class="color5" href="{{'/about'}}">About Us</a></li>

@@ -32,49 +32,52 @@ class PageController extends Controller {
 
         $crequest->save();
 
-        $table = customrequest::find(6);
 
-        //echo "<script type='text/javascript'>alert('$test');</script>";
 
-        return view('test_cat')->with('test',$table);
+        echo "<script type='text/javascript'>alert('Succesfully saved custom request');</script>";
+
+        $cr = customrequest::all()->where('user_id',Session::get('userid'));
+
+
+        return view('customlist')->with('crequests',$cr);
     }
 
     //Uploading Image
     public function doImageUpload(Request $request)
-    {
-        //Getting file type
-        $file = $request->file('file');
+{
+    //Getting file type
+    $file = $request->file('file');
 
-        //Getting file name
-        $filename =$file->getClientOriginalName();
+    //Getting file name
+    $filename =$file->getClientOriginalName();
 
-        //Saving physical file
-        $file->move('images', $filename);
-
-
-
-        $category=categories::find($request->input('cat_id'));
-
-        /*$image=$category->images()->create([
-            'categories_id' => $request->input('category_id'),
-            'file_name' => $filename,
-            'file_size' => $file->getClientSize(),
-            'file_path' => 'images/' . $filename
-        ]);*/
+    //Saving physical file
+    $file->move('images', $filename);
 
 
 
+    $category=categories::find($request->input('cat_id'));
 
-        //Saving image in database
-        $image = new image;
+    /*$image=$category->images()->create([
+        'categories_id' => $request->input('category_id'),
+        'file_name' => $filename,
+        'file_size' => $file->getClientSize(),
+        'file_path' => 'images/' . $filename
+    ]);*/
 
-        $image->categories_id=$request->input('cat_id');
-        $image->file_name = $filename;
-        $image->file_size = $file->getClientSize();
-        $image->file_path = 'images/' . $filename;
 
-        $image->save();
-    }
+
+
+    //Saving image in database
+    $image = new image;
+
+    $image->categories_id=$request->input('cat_id');
+    $image->file_name = $filename;
+    $image->file_size = $file->getClientSize();
+    $image->file_path = 'images/' . $filename;
+
+    $image->save();
+}
 
     //Add a category
     public function savecat(Request $request)
@@ -103,6 +106,42 @@ class PageController extends Controller {
         $category->save();
 
         return redirect()->back();
+    }
+
+    public function doCustomUpload(Request $request)
+    {
+        //Getting file type
+        $file = $request->file('file');
+
+        //Getting file name
+        $filename =$file->getClientOriginalName();
+
+        //Saving physical file
+        $file->move('images', $filename);
+
+
+
+        //$category=categories::find($request->input('cat_id'));
+
+        /*$image=$category->images()->create([
+            'categories_id' => $request->input('category_id'),
+            'file_name' => $filename,
+            'file_size' => $file->getClientSize(),
+            'file_path' => 'images/' . $filename
+        ]);*/
+
+
+
+
+        //Saving image in database
+        $cr = customrequest::findOrFail($request->input('cat_id'));
+
+        $cr->file_name = $filename;
+        $cr->file_size = $file->getClientSize();
+        $cr->file_path = 'images/' . $filename;
+        $cr->Status="Completed";
+
+        $cr->save();
     }
 
     //Update Category
@@ -159,11 +198,30 @@ class PageController extends Controller {
 
     }
 
+    public function a_customlist()
+    {
+
+        $creqeusts = customrequest::all();
+
+
+        return view('a_customlist')->with('crequests',$creqeusts);
+
+        //return view('addcat');
+
+    }
+
     public function viewreq($id)
     {
         $crequest = customrequest::findOrFail($id);
 
         return view('request-view')->with('crequest', $crequest);
+    }
+
+    public function a_viewreq($id)
+    {
+        $crequest = customrequest::findOrFail($id);
+
+        return view('a_request-view')->with('crequest', $crequest);
     }
 
     //View specific category (user)

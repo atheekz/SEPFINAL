@@ -3,7 +3,7 @@
 @section('content')
 
 <div>
-    admin hello
+
 </div>
 
 @stop

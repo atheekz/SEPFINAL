@@ -178,14 +178,22 @@ Route::group(['middleware' => ['web']], function () {
     //user's Custom Requests
     Route::get('customlist', 'PageController@customlist');
 
+    Route::get('a_customlist', 'PageController@a_customlist');
+
     Route::post('category/save', 'PageController@savecat');
 
     Route::post('category/do-upload', 'PageController@doImageUpload');
+
+    Route::post('custom/do-upload', 'PageController@doCustomUpload');
 
     Route::get('category/delete/{id}', 'PageController@deletecat');
 
     Route::get('image/delete/{id}', 'PageController@deleteimage');
 
     Route::get('customlist/view/{id}', 'PageController@viewreq');
+    Route::get('a_customlist/view/{id}', 'PageController@a_viewreq');
+
+
+
 });
 
