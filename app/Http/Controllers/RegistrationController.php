@@ -349,6 +349,7 @@ $i = users::all();
                  Session::set('username', $input['username']);
                  Session::set('userid', $item->id);
                  return view('admin');
+
              }
          }
 
