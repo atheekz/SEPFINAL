@@ -221,7 +221,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="container">
 		<div class="head">
 			<div class=" logo">
-				<a href="index.html"><img src={{ asset('images/logo.png') }} alt=""></a>
+				<a href="sepfinal/public/"><img src={{ asset('images/logo.png') }} alt=""></a>
 			</div>
 		</div>
 	</div>
@@ -301,7 +301,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a href="#"><i class="ic3"></i></a></li>
 						<li><a href="#"><i class="ic4"></i></a></li>
 					</ul>
-
 			</div>
 				<div class="clearfix"> </div>
 		</div>
@@ -327,15 +326,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
    <!-- Collect the nav links, forms, and other content for toggling -->
 
     <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+
+		<?php if ((Session::get('username')=='admin123456')): ?>
+
         <ul class="nav navbar-nav nav_1">
-            <li><a class="color" href="index.html">Home</a></li>
+			<li><a class="color" href="{{url ('addcat/list')}}">Categories</a></li>
+			<li><a class="color3" href="#">Customized Request</a></li>
 
-
-			<li><a class="color3" href="product.html">Sale</a></li>
-			<li><a class="color4" href="404.html">About</a></li><!--
-            <li><a class="color5" href="typo.html">Short Codes</a></li>-->
-            <li ><a class="color6" href="contact">Contact Us</a></li>
         </ul>
+
+			<?php else: ?>
+
+			<ul class="nav navbar-nav nav_1">
+				<li><a class="color" href="{{url('categories')}}">Categories</a></li>
+				<li><a class="color3" href="{{url('custom_cat')}}">Customized Request</a></li>
+				<li><a class="color3" href="#">Trending</a></li>
+				<li><a class="color4" href="#">Latest</a></li>
+				<li><a class="color5" href="#">About Us</a></li>
+				<li ><a class="color6" href="#">Contact Us</a></li>
+			</ul>
+
+		<?php endif; ?>
      </div><!-- /.navbar-collapse -->
 
 </nav>

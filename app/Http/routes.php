@@ -122,3 +122,23 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/home', 'HomeController@index');
 });
+
+/* ------------ Chandeesha ------------ */
+
+
+
+Route::group(['middleware' => ['web']], function () {
+
+    //Load Categories for users to view
+    Route::get('categories', 'PageController@catload');
+
+    //Load Specific Category for Users
+    Route::get('category/view-cat/{id}', 'PageController@viewcat2');
+
+    //View and add categories (admin)
+    Route::get('addcat/list', 'PageController@catlist');
+
+
+
+});
+
