@@ -37,6 +37,8 @@ class product extends Controller
 
     }
 
+
+
     //\Rating
 public function rating($val,$id){
 
