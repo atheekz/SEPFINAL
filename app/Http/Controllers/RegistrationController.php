@@ -343,6 +343,9 @@ $i = users::all();
          if($item->username==$input['username'] && $item->password==$input['password']) {
              $tcheck=true;
              if($item->username=='admin123456' && $item->password=='admin123456'){
+                 Session::set('username', $input['username']);
+                 Session::set('userid', $item->id);
+
                  return view('admin');
              }
          }

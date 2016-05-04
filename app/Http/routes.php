@@ -138,6 +138,12 @@ Route::group(['middleware' => ['web']], function () {
     //View and add categories (admin)
     Route::get('addcat/list', 'PageController@catlist');
 
+    //View specific category for admin
+    Route::get('category/view/{id}', 'PageController@viewcat');
+
+    //Update category
+    Route::post('category/update/{id}', 'PageController@updatecat');
+
 
 
 });
