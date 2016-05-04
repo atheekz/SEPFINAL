@@ -351,6 +351,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </nav>
 			</div>
+
+				<?php if (!(Session::get('username')=='admin123456')): ?>
 			<div class="col-sm-2 search-right">
 				<ul class="heart">
 				<li>
@@ -369,6 +371,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 					</div>
 					<div class="clearfix"> </div>
+				<?php endif; ?>
 
 						<!----->
 
