@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @if($res.count>0)
+    @if($res->count()>0)
 
     <center>
         <div class="panel panel-success">
@@ -19,6 +19,6 @@
         </div>
     </center>
     @else
-        {{"error"}}
+        {{"error could not delete image"}}
 
 @endsection
