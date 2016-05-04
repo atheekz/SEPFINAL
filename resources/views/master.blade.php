@@ -44,36 +44,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script src={{ asset('csi.js-include_html/csi.min.js') }}></script>
+	<script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+	<script src="jscolor.js"></script>
 	<!--new-->
 
 
 	<!--- start-rate"---->
-<script src={{ asset('js/jstarbox.js') }}></script>
+	<script src={{ asset('js/jstarbox.js') }}></script>
 	<link rel="stylesheet" href={{ asset('css/jstarbox.css') }} type="text/css" media="screen" charset="utf-8" />
-		<script type="text/javascript">
-        jQuery(function() {
-            jQuery('.starbox').each(function() {
-                var starbox = jQuery(this);
-                starbox.starbox({
+	<script type="text/javascript">
+		jQuery(function() {
+			jQuery('.starbox').each(function() {
+				var starbox = jQuery(this);
+				starbox.starbox({
 					average: starbox.attr('data-start-value'),
 					changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
 					ghosting: starbox.hasClass('ghosting'),
 					autoUpdateAverage: starbox.hasClass('autoupdate'),
 					buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
 					stars: starbox.attr('data-star-count') || 5
-					}).bind('starbox-value-changed', function(event, value) {
-                    if(starbox.hasClass('random')) {
-                        var val = Math.random();
-                        starbox.next().text(' '+val);
+				}).bind('starbox-value-changed', function(event, value) {
+					if(starbox.hasClass('random')) {
+						var val = Math.random();
+						starbox.next().text(' '+val);
 						Console.write(val);
-                        return val;
+						return val;
 
-                    }
-                })
+					}
+				})
 			});
-        });
-		</script>
-<!---//End-rate---->
+		});
+	</script>
+	<!---//End-rate---->
 	<!---//new----->
 
 	<script>
@@ -176,7 +178,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</script>
 	<!-- facebook -->
 
-<!--google -->
+	<!--google -->
 	<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
 
 	<script>
@@ -332,7 +334,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<?php if ((Session::get('facebook'))=='true'): ?>
 
 			<li><a class="color" href="{{url('categories')}}">Categories</a></li>
-			<li><a class="color3" href="{{url('custom_cat')}}">Customized Request</a></li>
+			<li><a class="color3" href="{{url('customlist')}}">Customized Request</a></li>
 			<li><a class="color3" href="{{'trending'}}">Trending</a></li>
 			<li><a class="color4" href="{{'latest'}}">Latest</a></li>
 			<li><a class="color5" href="{{'/about'}}">About Us</a></li>
@@ -387,7 +389,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								  <input type="text" name="SearchKey" id="SearchKey" placeholder="Enter search key">
 
 								  <button class="btn btn-primary">Search</button>
-								  <form>
+								  </form>
 						<?php endif; ?>
 					</ul>
 					<div class="cart box_1">
@@ -440,7 +442,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="clearfix"></div>
 		</div>
 	</div>
-</div>
+
 
 
 @yield('content')
@@ -487,9 +489,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"></div>
 			</div>
 			<!--//brand-->
-			</div>
-
-		</div>
 	<!--//content-->
 	<!--//footer-->
 <div class="footer">

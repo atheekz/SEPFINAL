@@ -169,7 +169,23 @@ Route::group(['middleware' => ['web']], function () {
     //Update category
     Route::post('category/update/{id}', 'PageController@updatecat');
 
+    //Make Custom Request
+    Route::get('custom_cat', 'PageController@customcatload');
 
+    //test
+    Route::post('testsave', 'PageController@testSave');
 
+    //user's Custom Requests
+    Route::get('customlist', 'PageController@customlist');
+
+    Route::post('category/save', 'PageController@savecat');
+
+    Route::post('category/do-upload', 'PageController@doImageUpload');
+
+    Route::get('category/delete/{id}', 'PageController@deletecat');
+
+    Route::get('image/delete/{id}', 'PageController@deleteimage');
+
+    Route::get('customlist/view/{id}', 'PageController@viewreq');
 });
 
