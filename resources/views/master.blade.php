@@ -327,79 +327,124 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
    <!-- Collect the nav links, forms, and other content for toggling -->
 
     <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+
         <ul class="nav navbar-nav nav_1">
-            <li><a class="color" href="index.html">Home</a></li>
+			<?php if ((Session::get('facebook'))=='true'): ?>
 
+			<li><a class="color" href="{{url('categories')}}">Categories</a></li>
+			<li><a class="color3" href="{{url('custom_cat')}}">Customized Request</a></li>
+			<li><a class="color3" href="{{'trending'}}">Trending</a></li>
+			<li><a class="color4" href="{{'latest'}}">Latest</a></li>
+			<li><a class="color5" href="{{'/about'}}">About Us</a></li>
+			<li ><a class="color6" href="{{'/contact'}}">Contact Us</a></li>
 
-			<li><a class="color3" href="product.html">Sale</a></li>
-			<li><a class="color4" href="404.html">About</a></li><!--
-            <li><a class="color5" href="typo.html">Short Codes</a></li>-->
-            <li ><a class="color6" href="contact">Contact Us</a></li>
+				<?php else: ?>
+
+				<li><a class="color" href="{{url('categories')}}">Categories</a></li>
+				<li><a class="color3" href="{{'/trending'}}">Trending</a></li>
+				<li><a class="color5" href="{{'/trending'}}">About Us</a></li>
+				<li ><a class="color6" href="{{'/trending'}}">Contact Us</a></li>
+
+				<?php endif; ?>
         </ul>
+
+
+
+
+
+
      </div><!-- /.navbar-collapse -->
 
+					@yield('banner')
 </nav>
 			</div>
-			<div class="col-sm-2 search-right">
-				<ul class="heart">
-				<li>
-				<a href="wishlist.html" >
-				<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-				</a></li>
-				<li><a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i></a></li>
+
+				<div class="col-sm-2 search-right">
+					<ul class="heart">
+
+						  <li>
+							  <?php if ((Session::get('facebook'))=='true'): ?>
+							  @if(Session::has('flash_message'))
+								  <div class="alert alert-success">
+									  {{Session::get('flash_message')}}
+								  </div>
+							  @endif
+							  @if(count($errors)>0)
+								  <div class="alert alert-danger">
+									  <ul>
+										  @foreach($errors->all() as $er )
+											  <li>
+												  {{$er}}
+											  </li>
+										  @endforeach
+									  </ul>
+								  </div>
+
+							  @endif
+							  <form class="form" method="POST" action="{{url('search')}}">
+								  <input type="hidden" name="_token" value="{{csrf_token()}}">
+
+								  <input type="text" name="SearchKey" id="SearchKey" placeholder="Enter search key">
+
+								  <button class="btn btn-primary">Search</button>
+								  <form>
+						<?php endif; ?>
 					</ul>
 					<div class="cart box_1">
-						<a href="checkout.html">
-						<h3> <div class="total">
-							<span class="simpleCart_total"></span></div>
-							<img src="images/cart.png" alt=""/></h3>
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+						<!-- <a href="checkout.html">
+                             <h3> <div class="total">
+                                     <span class="simpleCart_total"></span></div>
+                                 <img src="images/cart.png" alt=""/></h3>
+                         </a>
+                         <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>-->
 
 					</div>
 					<div class="clearfix"> </div>
 
-						<!----->
+					<!----->
 
-						<!---pop-up-box---->
-			<link href={{ asset('css/popuo-box.css') }} rel="stylesheet" type="text/css" media="all"/>
-			<script src={{ asset('js/jquery.magnific-popup.js') }} type="text/javascript"></script>
-			<!---//pop-up-box---->
-			<div id="small-dialog" class="mfp-hide">
-				<div class="search-top">
-					<div class="login-search">
-						<input type="submit" value="">
-						<input type="text" value="Search.." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search..';}">
+					<!---pop-up-box---->
+					<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
+					<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+					<!---//pop-up-box---->
+					<div id="small-dialog" class="mfp-hide">
+						<div class="search-top">
+							<div class="login-search">
+								<input type="submit" value="">
+								<input type="text" value="Search.." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search..';}">
+							</div>
+							<p>Shopin</p>
+						</div>
 					</div>
-					<p>Shopin</p>
-				</div>
-			</div>
-		 <script>
-$(document).ready(function() {
-    $('.popup-with-zoom-anim').magnificPopup({
-			type: 'inline',
-			fixedContentPos: false,
-			fixedBgPos: true,
-			overflowY: 'auto',
-			closeBtnInside: true,
-			preloader: false,
-			midClick: true,
-			removalDelay: 300,
-			mainClass: 'my-mfp-zoom-in'
-			});
+					<script>
+						$(document).ready(function() {
+							$('.popup-with-zoom-anim').magnificPopup({
+								type: 'inline',
+								fixedContentPos: false,
+								fixedBgPos: true,
+								overflowY: 'auto',
+								closeBtnInside: true,
+								preloader: false,
+								midClick: true,
+								removalDelay: 300,
+								mainClass: 'my-mfp-zoom-in'
+							});
 
-			});
-		</script>
-						<!----->
-			</div>
+						});
+					</script>
+
+
+					<!----->
+				</div>
+
 			<div class="clearfix"></div>
 		</div>
 	</div>
 </div>
 
 
-
 @yield('content')
+
 
 
 
@@ -447,41 +492,28 @@ $(document).ready(function() {
 		</div>
 	<!--//content-->
 	<!--//footer-->
-	<div class="footer">
+<div class="footer">
 	<div class="footer-middle">
-				<div class="container">
-					<div class="col-md-3 footer-middle-in">
-						<a href="index.html"><img src={{ asset('images/log.png') }} alt=""></a>
-						<p>Suspendisse sed accumsan risus. Curabitur rhoncus, elit vel tincidunt elementum, nunc urna tristique nisi, in interdum libero magna tristique ante. adipiscing varius. Vestibulum dolor lorem.</p>
-					</div>
+		<div class="container">
+			<div class="col-md-3 footer-middle-in">
 
-					<div class="col-md-3 footer-middle-in">
-						<h6>Information</h6>
-						<ul class=" in">
-							<li><a href="404.html">About</a></li>
-							<li><a href="contact.html">Contact Us</a></li>
-							<li><a href="#">Returns</a></li>
-							<li><a href="contact.html">Site Map</a></li>
-						</ul>
-						<ul class="in in1">
-							<li><a href="#">Order History</a></li>
-							<li><a href="wishlist.html">Wish List</a></li>
-							<li><a href="login.html">Login</a></li>
-						</ul>
-						<div class="clearfix"></div>
-					</div>
-					<div class="col-md-3 footer-middle-in">
-						<h6>Tags</h6>
-						<ul class="tag-in">
-							<li><a href="#">Lorem</a></li>
-							<li><a href="#">Sed</a></li>
-							<li><a href="#">Ipsum</a></li>
-							<li><a href="#">Contrary</a></li>
-							<li><a href="#">Chunk</a></li>
-							<li><a href="#">Amet</a></li>
-							<li><a href="#">Omnis</a></li>
-						</ul>
-					</div>
+				<p>Paintpal is the best place to blablaa</p>
+			</div>
+
+			<div class="col-md-3 footer-middle-in">
+				<h6>Information</h6>
+				<ul class=" in">
+					<li><a href="{{url('/about')}}">About</a></li>
+					<li><a href="{{url('/contact')}}">Contact Us</a></li>
+					<li><a href="contact.html">Site Map</a></li>
+				</ul>
+				<ul class="in in1">
+					<li><a href="#">Order History</a></li>
+					<li><a href="wishlist.html">Wish List</a></li>
+					<li><a href="login.html">Login</a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
 					<div class="col-md-3 footer-middle-in">
 						<h6>Newsletter</h6>
 						<span>Sign up for News Letter</span>

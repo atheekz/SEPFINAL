@@ -121,4 +121,55 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/home', 'HomeController@index');
+
+
+
+
+
+
+
+    //NIPUN
+    Route::get('latest','nController@getLatest');
+
+    Route::get('trending','nController@getTrending');
+
+    Route::get('/list','nController@getAllUsers');
+
+    Route::get('user/view/{id}','nController@viewSingleUser');
+
+    Route::get('deleteuser/{id}','nController@deleteUser');
+
+    Route::post('search','nController@searchImage');
+
+    Route::get('/viewimage/{id}','nController@ViewImage');
+
+    Route::get('viewimages','HomeController@ViewAllImages');
+
+    //END-NIPUN
 });
+
+/* ------------ Chandeesha ------------ */
+
+
+
+Route::group(['middleware' => ['web']], function () {
+
+    //Load Categories for users to view
+    Route::get('categories', 'PageController@catload');
+
+    //Load Specific Category for Users
+    Route::get('category/view-cat/{id}', 'PageController@viewcat2');
+
+    //View and add categories (admin)
+    Route::get('addcat/list', 'PageController@catlist');
+
+    //View specific category for admin
+    Route::get('category/view/{id}', 'PageController@viewcat');
+
+    //Update category
+    Route::post('category/update/{id}', 'PageController@updatecat');
+
+
+
+});
+
