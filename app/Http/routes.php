@@ -125,11 +125,18 @@ Route::group(['middleware' => 'web'], function () {
 
 /* ------------ Chandeesha ------------ */
 
-//Load Categories for users to view
+
 
 Route::group(['middleware' => ['web']], function () {
 
-
+    //Load Categories for users to view
     Route::get('categories', 'PageController@catload');
+
+    //Load Specific Category for Users
+    Route::get('category/view-cat/{id}', 'PageController@viewcat2');
+    
+
+
+
 });
 
