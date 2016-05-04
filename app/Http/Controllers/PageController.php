@@ -10,6 +10,7 @@ use App\image;
 use App\customrequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 
 class PageController extends Controller {
 
@@ -24,11 +25,14 @@ class PageController extends Controller {
         $crequest = new customrequest();
 
         $crequest->code=$request->input('cat_id');
-        $crequest->user_id=1;
+        $crequest->user_id=Session::get('userid');
+        $crequest->heading=$request->input('heading');
+        $crequest->text=$request->input('text_area');
+        $crequest->color=$request->input('color');
 
         $crequest->save();
 
-        $table = customrequest::find(28);
+        $table = customrequest::find(6);
 
         //echo "<script type='text/javascript'>alert('$test');</script>";
 
@@ -141,6 +145,25 @@ class PageController extends Controller {
 
         //return view('addcat');
 
+    }
+
+    public function customlist()
+    {
+
+        $creqeusts = customrequest::all()->where('user_id',Session::get('userid'));
+
+
+        return view('customlist')->with('crequests',$creqeusts);
+
+        //return view('addcat');
+
+    }
+
+    public function viewreq($id)
+    {
+        $crequest = customrequest::findOrFail($id);
+
+        return view('request-view')->with('crequest', $crequest);
     }
 
     //View specific category (user)
