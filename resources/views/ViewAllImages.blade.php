@@ -14,7 +14,7 @@
 
                     <td><img src="{{$img['file_path']}}"></td>
 
-            <td><a class="btn btn-primary" href="{{url('viewimage/'.$img->id)}}">View Image Details</a></td>
+            <td><a class="btn btn-primary" href="{{url('viewSingleImageAdmin/'.$img->id)}}">View Image Details</a></td>
                 </tr>
 
                 @endforeach

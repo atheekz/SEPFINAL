@@ -157,12 +157,29 @@ class nController extends Controller
     public function viewDetailsOfAnImage($product_id)
     {
 
-        $product_b =DB::table('images')->where('id', $product_id)->get();
+        $product_b =DB::table('res')->where('ImageID', $product_id)->first();
         $data = DB::table('imagedetails')->where('id', $product_id)->first();
         return view('painting')->with('data', $data)->with('testproduct', $product_b);
         //\Return View
 
 
+    }
+
+    public function viewImageAdmin($id)
+    {
+        $image=DB::table('images')->where('id',$id)->first();
+
+        $image_det=DB::table('imagedetails')->where('id',$id)->first();
+
+        return view('viewSingleImage')->with('image',$image)->with('image_det',$image_det);
+
+    }
+
+    public function deleteImage($id)
+    {
+        $res=DB::table('images')->where('id', $id)->delete();
+
+        return view('deletedImage')->with('res',$res);
     }
 
 
