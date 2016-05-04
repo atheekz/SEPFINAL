@@ -29,10 +29,9 @@ class product extends Controller
     public function show($product_id)
     {
 
-
+        $product_b =DB::table('res')->where('ImageID', $product_id)->first();
         $data = DB::table('imagedetails')->where('id', $product_id)->first();
-        return view('painting')->with('data', $data);
-
+        return view('painting')->with('data', $data)->with('testproduct', $product_b);
         //\Return View
 
 

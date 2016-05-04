@@ -289,6 +289,8 @@ if($input['val_option']=='email') {
         session()->forget('image');
         session()->forget('username');
         session()->forget('id');
+        session()->forget('userid');
+
       //  return Redirect::back();
 
 return Redirect::to('/');
@@ -340,6 +342,9 @@ $i = users::all();
         foreach($i as $item){
          if($item->username==$input['username'] && $item->password==$input['password']) {
              $tcheck=true;
+             if($item->username=='admin123456' && $item->password=='admin123456'){
+                 return view('admin');
+             }
          }
 
 
@@ -356,6 +361,8 @@ $i = users::all();
             $i='http://www.propertyzaar.com/images/default-user.png';
             Session::set('image', $i);
             Session::set('username', $input['username']);
+            Session::set('userid', $item->id);
+
           //  Session::set('id', $testq['id']);
           //  return view('');
           //  return Redirect::to('homeF');
