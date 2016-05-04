@@ -141,9 +141,9 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::post('search','nController@searchImage');
 
-    Route::get('/viewimage/{id}','nController@ViewImage');
+    Route::get('viewimage/{id}','nController@viewDetailsOfAnImage');
 
-    Route::get('viewimages','HomeController@ViewAllImages');
+    Route::get('viewimages','nController@ViewAllImages');
 
     //END-NIPUN
 });

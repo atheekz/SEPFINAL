@@ -43,7 +43,7 @@ class nController extends Controller
     {
 
         //Store information of all users in $data variable
-        $data=User::where('name','!=','Admin')->get();
+        $data=User::where('username','!=','admin123456')->get();
 
         //return the Users with along with the $date variable
         return view('/Users', array('data' => $data));
@@ -64,7 +64,7 @@ class nController extends Controller
 
         $users=User::findOrFail($id);
 
-        return view('/user-view')->with('users',$users);
+        return view('/viewSingleUser')->with('users',$users);
     }
 
     public function deleteUser($id)
@@ -120,7 +120,7 @@ class nController extends Controller
 
         if($validator->fails())
         {
-            return redirect('/home')->withErrors($validator)->withInput();
+            return redirect('/homeF')->withErrors($validator)->withInput();
         }
 
 
@@ -154,6 +154,16 @@ class nController extends Controller
         return view('/ViewAllImages')->with('images',$images);
     }
 
+    public function viewDetailsOfAnImage($product_id)
+    {
+
+        $product_b =DB::table('images')->where('id', $product_id)->get();
+        $data = DB::table('imagedetails')->where('id', $product_id)->first();
+        return view('painting')->with('data', $data)->with('testproduct', $product_b);
+        //\Return View
+
+
+    }
 
 
 

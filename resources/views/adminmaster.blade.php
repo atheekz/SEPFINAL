@@ -351,6 +351,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 @yield('banner')
             </nav>
+            <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+
+                <ul class="nav navbar-nav nav_1">
+
+
+                    <li><a class="color" href="{{url('categories')}}">Categories</a></li>
+                    <li><a class="color3" href="{{url('custom_cat')}}">Customized Request</a></li>
+                    <li><a class="color3" href="{{'trending'}}">Trending</a></li>
+                    <li><a class="color4" href="{{'latest'}}">Latest</a></li>
+                    <li><a class="color5" href="{{'/about'}}">About Us</a></li>
+                    <li ><a class="color6" href="{{'/contact'}}">Contact Us</a></li>
+
+                </ul>
+
+
+
+
+
+
+            </div>
         </div>
 
         <div class="col-sm-2 search-right">
@@ -374,13 +394,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
             <!---//pop-up-box---->
             <div id="small-dialog" class="mfp-hide">
-                <div class="search-top">
+               <!-- <div class="search-top">
                     <div class="login-search">
                         <input type="submit" value="">
                         <input type="text" value="Search.." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search..';}">
                     </div>
                     <p>Shopin</p>
-                </div>
+                </div>-->
             </div>
             <script>
                 $(document).ready(function() {

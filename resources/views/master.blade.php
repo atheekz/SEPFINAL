@@ -364,23 +364,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 						  <li>
 							  <?php if ((Session::get('facebook'))=='true'): ?>
-							  @if(Session::has('flash_message'))
-								  <div class="alert alert-success">
-									  {{Session::get('flash_message')}}
-								  </div>
-							  @endif
-							  @if(count($errors)>0)
-								  <div class="alert alert-danger">
-									  <ul>
-										  @foreach($errors->all() as $er )
-											  <li>
-												  {{$er}}
-											  </li>
-										  @endforeach
-									  </ul>
-								  </div>
+								  @if(Session::has('flash_message'))
+									  <div class="alert alert-success">
+										  {{Session::get('flash_message')}}
+									  </div>
+								  @endif
+								  @if(count($errors)>0)
+									  <div class="alert alert-danger">
+										  <ul>
+											  @foreach($errors->all() as $er )
+												  <li>
+													  {{$er}}
+												  </li>
+											  @endforeach
+										  </ul>
+									  </div>
 
-							  @endif
+								  @endif
 							  <form class="form" method="POST" action="{{url('search')}}">
 								  <input type="hidden" name="_token" value="{{csrf_token()}}">
 
