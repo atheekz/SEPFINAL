@@ -3,62 +3,6 @@
 @section('content')
 
 
-<!DOCTYPE HTML>
-
-<html>
-
-<head>
-    <title>Paint Pal</title>
-    <link href="{{ URL::asset('/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
-    <!-- Custom Theme files -->
-    <!--theme-style-->
-    <link href="{{ URL::asset('/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
-    <!--//theme-style-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Shopin Responsive web template, Bootstrap Web Templates, Flat Web Templates, AndroId Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <!--theme-style-->
-    <link href="{{ URL::asset('/css/style4.css') }}" rel="stylesheet" type="text/css" media="all" />
-    <!--//theme-style-->
-    <script src="{{ URL::asset('/js/jquery.min.js') }}"></script>
-    <!--- start-rate---->
-    <script src="{{ URL::asset('/js/jstarbox.js') }}"></script>
-    <link rel="stylesheet" href="{{ URL::asset('/css/jstarbox.css') }}" type="text/css" media="screen" charset="utf-8" />
-    <script type="text/javascript">
-        jQuery(function() {
-            jQuery('.starbox').each(function() {
-                var starbox = jQuery(this);
-                starbox.starbox({
-                    average: starbox.attr('data-start-value'),
-                    changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
-                    ghosting: starbox.hasClass('ghosting'),
-                    autoUpdateAverage: starbox.hasClass('autoupdate'),
-                    buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
-                    stars: starbox.attr('data-star-count') || 5
-                }).bind('starbox-value-changed', function(event, value) {
-                    if(starbox.hasClass('random')) {
-                        var val = Math.random();
-                        starbox.next().text(' '+val);
-                        return val;
-                    }
-                })
-            });
-        });
-    </script>
-    <!-- Custom Theme files -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <!-- webfonts -->
-    <link href='http://fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Rochester' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.css">
-</head>
-
-<body>
-
 <div class="bottom-grids collections">
     <div class="content-mid">
 
@@ -190,23 +134,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
 </div>
 
-
-<script src="{{ URL::asset('/js/simpleCart.min.js') }}"> </script>
-<!-- slide -->
-<script src="{{ URL::asset('/js/bootstrap.min.js') }}"></script>
-<!--light-box-files -->
-<script src="{{ URL::asset('/js/jquery.chocolat.js') }}"></script>
-<!--<script src="{{ URL::asset('/js/app.js') }}"></script> -->
-<link rel="stylesheet" href="{{ URL::asset('/css/chocolat.css') }}" type="text/css" media="screen" charset="utf-8">
-<!--light-box-files -->
-<script type="text/javascript" charset="utf-8">
-    $(function() {
-        $('a.picture').Chocolat();
-    });
-</script>
-
-</body>
-
-</html>
 
 @stop
