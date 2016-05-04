@@ -121,4 +121,29 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/home', 'HomeController@index');
+
+
+
+
+
+
+
+    //NIPUN
+    Route::get('latest','nController@getLatest');
+
+    Route::get('trending','nController@getTrending');
+
+    Route::get('/list','nController@getAllUsers');
+
+    Route::get('user/view/{id}','nController@viewSingleUser');
+
+    Route::get('deleteuser/{id}','nController@deleteUser');
+
+    Route::post('search','nController@searchImage');
+
+    Route::get('/viewimage/{id}','nController@ViewImage');
+
+    Route::get('viewimages','HomeController@ViewAllImages');
+
+    //END-NIPUN
 });
