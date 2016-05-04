@@ -332,10 +332,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <ul class="nav navbar-nav nav_1">
 			<li><a class="color" href="{{url ('addcat/list')}}">Categories</a></li>
 			<li><a class="color3" href="#">Customized Request</a></li>
-			<li><a class="color3" href="#">Trending</a></li>
-			<li><a class="color4" href="#">Latest</a></li>
-			<li><a class="color5" href="#">About Us</a></li>
-			<li ><a class="color6" href="#">Contact Us</a></li>
+
         </ul>
 
 			<?php else: ?>
