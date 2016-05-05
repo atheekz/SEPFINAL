@@ -153,6 +153,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::post('edit','nController@edit');
 
+    Route::get('about','nController@aboutUs');
+
 
     //END-NIPUN
 });
