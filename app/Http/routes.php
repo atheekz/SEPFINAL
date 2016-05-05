@@ -43,9 +43,9 @@ Route::get('home', function () {
    }
 });*/
 
-Route::get('users', function () {
-   $users=App\users::find(1);
-   echo "Hellow ".$users->Username;
+Route::get('/test', function () {
+  $users=App\User::find(83);
+   echo $users->username;
 }); 
 
 
@@ -89,6 +89,7 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
     Route::get('/adminsubscribe', 'RegistrationController@AdminSubscription');//admin Subscription
     Route::post('/addsub', 'RegistrationController@addsub');//contact is mail
     Route::get('searche', 'RegistrationController@search_email');
+
     ////get login
 
     Route::post('/sendsub', 'RegistrationController@sendsubscription');//send subscription
@@ -115,7 +116,25 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
         'uses' => 'RegistrationController@confirm'
     ]);
 
+
+//cart
+Route::get('/cart', 'CartController@show');
+Route::get('/cart/add/{imageId}', 'CartController@add');
+
+Route::get('/cartf', 'CartController@showCart');
+Route::get('cart/removeItem/{id}','CartController@delete');
+
+Route::get('/Wishlist/add/{id}','wishlistController@addWish');
+Route::get('/Wishlist','wishlistController@showWish');
+Route::get('/Wishlist/remove/{id}','wishlistController@removeWish');
+
+Route::get('/painting/comments/{imageId}','CommentController@showComments');
+Route::post('/painting/comments/add/{imageId}','CommentController@addComment');
+Route::get('/painting/comments/edit/{commentId}','CommentController@editComment');
+Route::get('/painting/comments/delete/{commentId}','CommentController@editComment');
+
 });
+
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
