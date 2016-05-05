@@ -182,6 +182,35 @@ class nController extends Controller
         return view('deletedImage')->with('res',$res);
     }
 
+    public function editImage($id)
+    {
+
+        $details=DB::table('imagedetails')->where('id',$id)->get();
+
+        $image=DB::table('images')->where('id',$id)->get();
+
+        return view('editImage')->with('details',$details)->with('image',$image);;
+
+    }
+
+    public function edit(Request $request)
+    {
+
+
+
+
+        $title=$request->input('title');
+        $overview=$request->input('overview');
+        $desc=$request->input('desc');
+        $addinfo=$request->input('addinfo');
+        $cost=$request->input('cost');
+
+        //Search database for matching rows
+
+    //$result=DB::table('imagedetails')->
+//        return view('/editImage')->with('result',$result);
+
+    }
 
 
 
