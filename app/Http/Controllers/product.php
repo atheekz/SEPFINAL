@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Mail;
-
-use App\finalCart;
 //use DB;
 require('textlocal.php');
 
@@ -30,16 +28,25 @@ class product extends Controller
     //\View product details
     public function show($product_id)
     {
-    $finalCart = finalCart::all()->where('user_id',Session::get('userid'));
-     
 
+        $product_b =DB::table('res')->where('ImageID', $product_id)->first();
         $data = DB::table('imagedetails')->where('id', $product_id)->first();
-        return view('painting')->with('data', $data)->with('finalcart',$finalCart);;
-
+        return view('painting')->with('data', $data)->with('testproduct', $product_b)->with('id',$product_id);
         //\Return View
 
 
     }
+
+    public function a_show($product_id)
+    {
+
+        $product_b =DB::table('res')->where('ImageID', $product_id)->first();
+        $data = DB::table('imagedetails')->where('id', $product_id)->first();
+        return view('painting_a')->with('data', $data)->with('testproduct', $product_b);
+        //\Return View
+    }
+
+
 
     //\Rating
 public function rating($val,$id){

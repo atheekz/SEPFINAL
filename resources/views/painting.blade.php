@@ -511,7 +511,7 @@
             <div class="flexslider">
                 <ul class="slides">
                     <li data-thumb="images/si.jpg">
-                        <div class="thumb-image"> <img src={{ asset('images/mainlbanner.jpg') }} data-imagezoom="true" class="img-responsive"> </div>
+                        <div class="thumb-image"> <img src={{ asset($data->image_path) }} data-imagezoom="true" class="img-responsive"> </div>
                     </li>RATE THIS PAINTING</br>
 
                     <form id="ratingsForm">
@@ -531,12 +531,14 @@
 
                     </form>                </ul>
 
+<?php if($data->id == $testproduct->ImageID && (Session::get('userid'))==$testproduct->UserID):  ?>
 
                 <div id="ratesubmit">
                     <lable type="submit"  class="btn btn-primary">
                         <i class="fa fa-btn fa-user"></i> Rate
                     </lable>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
         <div class="col-md-7 single-top-in">
@@ -624,6 +626,8 @@
         </div>
         <!---->
     </div>
+
+
     <!----->
 
     <div class="col-md-3 product-bottom product-at">
@@ -656,6 +660,9 @@
 
             </div>
     <div class="clearfix"> </div>
+    <ul class="nav nav-pills" role="tablist">
+        <li role="presentation"><a href="{{url('category/view-cat/' .$id)}}">Back</a></li>
+    </ul>
 </div>
 </div>
 <!--brand-->
@@ -664,6 +671,8 @@
 </div>
 
 </div>
+
+
 
 <script>
     // Can also be used with $(document).ready()

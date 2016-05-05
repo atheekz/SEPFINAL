@@ -106,9 +106,9 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
     Route::post('/editview2','RegistrationController@update');
     Route::get('app/rating_ajax/{val}/{id}', 'product@rating');//raing controller using ajax
     Route::get('/map', 'map@view');
-    Route::get('/', function () {
-        return view('homeF');
-    });
+
+    Route::get('/', 'RegistrationController@redirect');
+
 
 //confirmation using the verification code
     Route::get('register/verify/{confirmationCode}', [
@@ -140,4 +140,96 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/home', 'HomeController@index');
+
+
+
+
+
+
+
+    //NIPUN
+    Route::get('latest','nController@getLatest');
+
+    Route::get('trending','nController@getTrending');
+
+    Route::get('/list','nController@getAllUsers');
+
+    Route::get('user/view/{id}','nController@viewSingleUser');
+
+    Route::get('deleteuser/{id}','nController@deleteUser');
+
+    Route::post('search','nController@searchImage');
+
+    Route::get('viewimage/{id}','nController@viewDetailsOfAnImage');
+
+    Route::get('viewimages','nController@ViewAllImages');
+
+    Route::get('viewSingleImageAdmin/{id}','nController@viewImageAdmin');
+
+    Route::get('deleteImage/{id}','nController@deleteImage');
+
+    Route::get('editImage/{id}','nController@editImage');
+
+    Route::post('edit','nController@edit');
+
+    Route::get('about','nController@aboutUs');
+
+
+    //END-NIPUN
 });
+
+/* ------------ Chandeesha ------------ */
+
+
+
+Route::group(['middleware' => ['web']], function () {
+
+    //Load Categories for users to view
+    Route::get('categories', 'PageController@catload');
+
+    //Load Specific Category for Users
+    Route::get('category/view-cat/{id}', 'PageController@viewcat2');
+
+    //Load Specific Category for Users
+    Route::get('category/details-view/{id}', 'product@show');
+
+    //Load Specific Category for Users
+    Route::get('category/a_details/{id}', 'product@a_show');
+
+    //View and add categories (admin)
+    Route::get('addcat/list', 'PageController@catlist');
+
+    //View specific category for admin
+    Route::get('category/view/{id}', 'PageController@viewcat');
+
+    //Update category
+    Route::post('category/update/{id}', 'PageController@updatecat');
+
+    //Make Custom Request
+    Route::get('custom_cat', 'PageController@customcatload');
+
+    //test
+    Route::post('testsave', 'PageController@testSave');
+
+    //user's Custom Requests
+    Route::get('customlist', 'PageController@customlist');
+
+    Route::get('a_customlist', 'PageController@a_customlist');
+
+    Route::post('category/save', 'PageController@savecat');
+
+    Route::post('category/do-upload', 'PageController@doImageUpload');
+
+    Route::post('custom/do-upload', 'PageController@doCustomUpload');
+
+    Route::get('category/delete/{id}', 'PageController@deletecat');
+
+    Route::get('image/delete/{id}', 'PageController@deleteimage');
+
+    Route::get('customlist/view/{id}', 'PageController@viewreq');
+    Route::get('a_customlist/view/{id}', 'PageController@a_viewreq');
+
+
+
+});
+

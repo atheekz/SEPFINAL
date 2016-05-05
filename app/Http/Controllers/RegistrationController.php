@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Mail;
 use App\subscription;
+
 //use DB;
 require('textlocal.php');
 
@@ -342,6 +343,14 @@ $i = users::all();
         foreach($i as $item){
          if($item->username==$input['username'] && $item->password==$input['password']) {
              $tcheck=true;
+             if($item->username=='admin123456' && $item->password=='admin123456'){
+                 Session::set('facebook', 'true');
+                 $i='http://www.propertyzaar.com/images/default-user.png';
+                 Session::set('image', $i);
+                 Session::set('username', $input['username']);
+                 Session::set('userid', $item->id);
+                 return view('adminmain');
+             }
          }
 
 
@@ -381,6 +390,17 @@ $i = users::all();
         return view('homeF');
     }
 
+    public function redirect(){
+
+        if(Session::get('username')=='admin123456'){
+            return view('adminmain');
+        }
+        else{
+            return view('homeF');
+        }
+
+    }
+
     public function edituser_view($usename){
         $user = DB::table('users')->where('username', $usename)->first();
         return view('editview')->with('user', $user);
@@ -412,20 +432,27 @@ $i = users::all();
 
       /*  if ($validator->fails()) {
             return Redirect::back()->withInput()->withErrors($validator);
-        }
+        }iid
 */
-            $i1d = DB::table('users')
-                ->where('id', 82)
-                ->update(array('email' => $request->input('email')));
-            $id2 = DB::table('users')
-                ->where('id', 82)
-                ->update(array('phoneNo' => $request->input('phoneNo')));
-
-
-
         if ($validator->fails()) {
             return Redirect::back()->withInput()->withErrors($validator);
         }
+           /* $i1d = DB::table('users')
+                ->where('id', $request->input('email'))
+                ->update(array('email' => $request->input('email')));
+            $id2 = DB::table('users')
+                ->where('id',$request->input('email'))
+                ->update(array('phoneNo' => $request->input('phoneNo')));
+*/
+
+        $category = users::findOrFail($request->input('id'));
+
+        $category->email = $request->input('email');
+        $category->phoneNo = $request->input('phoneNo');
+        $category->save();
+
+
+
 
         $user = DB::table('users')->where('username', $request->input('username'))->first();
         return view('editview')->with('user', $user);
