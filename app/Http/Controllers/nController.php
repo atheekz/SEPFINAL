@@ -34,9 +34,9 @@ class nController extends Controller
 
     public function getTrending()
     {
-        $trend = DB::table('images')->orderby('Count','asc')->Paginate(1);
+        $trend = DB::table('images')->orderby('Count','asc')->get();
 
-        return view('/trending')->with('trend',$trend);
+        return view('newtrending')->with('trend',$trend);
     }
 
     public function getAllUsers()
@@ -215,7 +215,7 @@ class nController extends Controller
 
     public function aboutUs()
     {
-            return view ('AboutUs');
+            return view ('/AboutUs');
     }
 
 

@@ -344,9 +344,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<li><a class="color" href="{{url('categories')}}">Categories</a></li>
 			<li><a class="color3" href="{{url('customlist')}}">Customized Request</a></li>
-			<li><a class="color3" href="{{'trending'}}">Trending</a></li>
+			<li><a class="color3" href="{{url('/trending')}}">Trending</a></li>
 			<li><a class="color4" href="{{'latest'}}">Latest</a></li>
-			<li><a class="color5" href="{{'/about'}}">About Us</a></li>
+			<li><a class="color5" href="{{url('/about')}}">About Us</a></li>
 			<li ><a class="color6" href="{{url('contact')}}">Contact Us</a></li>
 
 
@@ -356,7 +356,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 				<li><a class="color" href="{{url('categories')}}">Categories</a></li>
 				<li><a class="color3" href="{{'/trending'}}">Trending</a></li>
-				<li><a class="color5" href="{{'/about'}}">About Us</a></li>
+				<li><a class="color5" href="{{url('/about')}}">About Us</a></li>
 				<li ><a class="color6" href="{{url('contact')}}">Contact Us</a></li>
 
 				<?php endif; ?>
