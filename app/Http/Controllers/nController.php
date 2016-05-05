@@ -213,6 +213,11 @@ class nController extends Controller
 
     }
 
+    public function aboutUs()
+    {
+            return view ('AboutUs');
+    }
+
 
 
 }
