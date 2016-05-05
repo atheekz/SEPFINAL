@@ -206,6 +206,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('image/delete/{id}', 'PageController@deleteimage');
 
     Route::get('customlist/view/{id}', 'PageController@viewreq');
+
+    Route::get('customlist/delete/{id}', 'PageController@delreq');
+
     Route::get('a_customlist/view/{id}', 'PageController@a_viewreq');
 
 
