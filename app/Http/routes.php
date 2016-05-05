@@ -145,6 +145,9 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('viewimages','nController@ViewAllImages');
 
+    Route::get('viewSingleImageAdmin/{id}','nController@viewImageAdmin');
+
+    Route::get('deleteImage/{id}','nController@deleteImage');
     //END-NIPUN
 });
 
