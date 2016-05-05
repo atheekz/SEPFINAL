@@ -261,7 +261,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<li>	<p id="header_color2" style="color: #d62728" >Welcome , <?php echo (Session::get('username')) ;?></p>
 										<img src=<?php echo (Session::get('image')); ?>  height="42" width="42" style = "border-radius:20px;" >
 								</li>
-									<li><div id="header_color"><a href="{{url('edituser/')}}<?php echo (Session::get('username')) ;?>">Edit</a></div></li>
+									<li><div id="header_color"><a href="./edituser/<?php echo (Session::get('username')) ;?>">Edit</a></div></li>
 
 									<li><div id="header_color"><a href="{{url('sign_out')}}">signout</a></div></li>
 								<?php else: ?>
@@ -358,7 +358,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><a class="color3" href="{{url('customlist')}}">Customized Request</a></li>
 				<li><a class="color3" href="{{'/trending'}}">Trending</a></li>
 				<li><a class="color5" href="{{'/trending'}}">About Us</a></li>
-				<li ><a class="color6" href="{{'/trending'}}">Contact Us</a></li>
+				<li ><a class="color6" href="{{url('contact')}}">Contact Us</a></li>
 
 				<?php endif; ?>
         </ul>

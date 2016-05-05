@@ -122,7 +122,7 @@
             });
         });
 
-$('#iid').hide();
+$('#id').hide();
 
 
 
@@ -251,10 +251,18 @@ $('#iid').hide();
                                 </div>
                             </div>
 
+                            <div class="login-mail">
+                                <div class="{{ $errors->has('id') ? ' has-error' : '' }}">
+                                   
+                                    <input id="id" type="text" placeholder="User ID" maxlength="11" name="id" value="{{ $user->id }}">
 
-
-                            <input id="iid" type="text"  value="{{ $user->id }}">
-
+                                    @if ($errors->has('id'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('id') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
                             <div id="final_submit">
                                 <input type="submit" value="Update" class="btn btn-primary">
                                     <i class="fa fa-btn fa-user"></i>
