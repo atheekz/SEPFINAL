@@ -131,7 +131,7 @@ Route::group(['middleware' => 'web'], function () {
     //NIPUN
     Route::get('latest','nController@getLatest');
 
-    Route::get('trending','nController@getTrending');
+    Route::get('/trending','nController@getTrending');
 
     Route::get('/list','nController@getAllUsers');
 
@@ -153,7 +153,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::post('edit','nController@edit');
 
-    Route::get('about','nController@aboutUs');
+    Route::get('/about','nController@aboutUs');
+
 
 
     //END-NIPUN
