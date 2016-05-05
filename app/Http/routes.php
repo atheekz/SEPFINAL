@@ -92,6 +92,7 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
     ////get login
 
+
     Route::post('/sendsub', 'RegistrationController@sendsubscription');//send subscription
     Route::get('/sign_out', 'RegistrationController@signout');//sign out
     Route::get('/contact', 'Contact@view');//Contact us view
@@ -108,7 +109,7 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
     Route::get('/map', 'map@view');
 
     Route::get('/', 'RegistrationController@redirect');
-
+    Route::get('checkout', 'RegistrationController@checkout');
 
 //confirmation using the verification code
     Route::get('register/verify/{confirmationCode}', [

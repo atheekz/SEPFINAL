@@ -723,4 +723,9 @@ public function resetpass(){
                     ->withErrors($validator);
 
     }
+
+    public function checkout(){
+
+        return view ('checkout');
+    }
 }

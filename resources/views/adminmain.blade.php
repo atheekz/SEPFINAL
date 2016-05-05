@@ -13,6 +13,10 @@
     <div class="col-md-3 brand-grid">
         <a href="{{url('/list')}}"}> <img src="images/ic2.png" class="img-responsive" alt="">View Users</a>
     </div>
+
+    <div class="col-md-3 brand-grid">
+        <a href="{{url('/adminsubscribe')}}"}> <img src="images/ic2.png" class="img-responsive" alt="">Subscripbe</a>
+    </div>
     <!-- <div class="col-md-3 brand-grid">
             <a href="{{url('/viewusers')}}"}>  <img src="images/ic3.png" class="img-responsive" alt="">View Orders</a>
         </div>-->

@@ -531,14 +531,14 @@
 
                     </form>                </ul>
 
-<?php if($data->id == $testproduct->ImageID && (Session::get('userid'))==$testproduct->UserID):  ?>
+<!-- if($data->id == $testproduct->ImageID && (Session::get('userid'))==$testproduct->UserID): -->
 
                 <div id="ratesubmit">
                     <lable type="submit"  class="btn btn-primary">
                         <i class="fa fa-btn fa-user"></i> Rate
                     </lable>
                 </div>
-                <?php endif; ?>
+
             </div>
         </div>
         <div class="col-md-7 single-top-in">
@@ -575,7 +575,7 @@
                     });
                 </script>
                 <!--quantity-->
-				
+
                 <a href="/cart/add/{{$data->id}}" class="add-to item_add hvr-skew-backward">Add to cart</a>
 
                 <div class="clearfix"> </div>

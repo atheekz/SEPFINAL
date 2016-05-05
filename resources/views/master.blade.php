@@ -278,6 +278,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><div id="header_color"><a href="./login"> log in</a></div></li>
 				<li><a href="register">Register</a></li>
 				<?php endif; ?>
+
+				<?php if ((Session::get('facebook'))=='true'): ?>
+				<li><div id="header_color"><a href={{url ('checkout')}}> Checkout</a></div></li>
+<?php endif; ?>
 				<li></li>
 					</ul>
 		</div>
@@ -356,7 +360,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 				<li><a class="color" href="{{url('categories')}}">Categories</a></li>
 				<li><a class="color3" href="{{'/trending'}}">Trending</a></li>
-				<li><a class="color5" href="{{'/about'}}">About Us</a></li>
+				<li><a class="color5" href="{{url('about')}}">About Us</a></li>
 				<li ><a class="color6" href="{{url('contact')}}">Contact Us</a></li>
 
 				<?php endif; ?>
