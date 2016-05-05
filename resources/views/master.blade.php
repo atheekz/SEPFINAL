@@ -224,7 +224,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="container">
 		<div class="head">
 			<div class=" logo">
-				<a href="index.html"><img src={{ asset('images/logo.png') }} alt=""></a>
+				<a href="{{url('/')}}"><img src={{ asset('images/logo.png') }} alt=""></a>
 			</div>
 		</div>
 	</div>
@@ -332,7 +332,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 
         <ul class="nav navbar-nav nav_1">
+
+
 			<?php if ((Session::get('facebook'))=='true'): ?>
+
+			<?php if ((Session::get('username'))=='admin123456'): ?>
+			<li><a class="color" href="{{url('addcat/list')}}">Categories</a></li>
+			<li><a class="color3" href="{{url('a_customlist')}}">Customized Request</a></li>
+
+				<?php else: ?>
 
 			<li><a class="color" href="{{url('categories')}}">Categories</a></li>
 			<li><a class="color3" href="{{url('customlist')}}">Customized Request</a></li>
@@ -341,15 +349,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<li><a class="color5" href="{{'/about'}}">About Us</a></li>
 			<li ><a class="color6" href="{{url('contact')}}">Contact Us</a></li>
 
-				<?php elseif ((Session::get('username'))=='admin123456'): ?>
-				<li><a class="color" href="{{url('addcat')}}">Categories</a></li>
-				<li><a class="color3" href="{{url('a_customlist')}}">Customized Request</a></li>
 
+				<?php endif; ?>
 
 				<?php else: ?>
 
 				<li><a class="color" href="{{url('categories')}}">Categories</a></li>
-				<li><a class="color3" href="{{url('a_customlist')}}">Customized Request</a></li>
+				<li><a class="color3" href="{{url('customlist')}}">Customized Request</a></li>
 				<li><a class="color3" href="{{'/trending'}}">Trending</a></li>
 				<li><a class="color5" href="{{'/trending'}}">About Us</a></li>
 				<li ><a class="color6" href="{{'/trending'}}">Contact Us</a></li>
@@ -372,7 +378,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul class="heart">
 
 						  <li>
-							  <?php if ((Session::get('facebook'))=='true'): ?>
+							  <?php if( ((Session::get('facebook'))=='true') &&((Session::get('username'))!='admin123456')): ?>
+
 								  @if(Session::has('flash_message'))
 									  <div class="alert alert-success">
 										  {{Session::get('flash_message')}}
@@ -388,8 +395,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											  @endforeach
 										  </ul>
 									  </div>
-
-								  @endif
+									@endif
+								  
 							  <form class="form" method="POST" action="{{url('search')}}">
 								  <input type="hidden" name="_token" value="{{csrf_token()}}">
 

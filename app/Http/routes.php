@@ -105,9 +105,9 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
     Route::post('/editview2','RegistrationController@update');
     Route::get('app/rating_ajax/{val}/{id}', 'product@rating');//raing controller using ajax
     Route::get('/map', 'map@view');
-    Route::get('/', function () {
-        return view('homeF');
-    });
+
+    Route::get('/', 'RegistrationController@redirect');
+
 
 //confirmation using the verification code
     Route::get('register/verify/{confirmationCode}', [
