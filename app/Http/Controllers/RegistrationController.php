@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Mail;
 use App\subscription;
+
 //use DB;
 require('textlocal.php');
 
@@ -420,20 +421,27 @@ $i = users::all();
 
       /*  if ($validator->fails()) {
             return Redirect::back()->withInput()->withErrors($validator);
-        }
+        }iid
 */
-            $i1d = DB::table('users')
-                ->where('id', 82)
-                ->update(array('email' => $request->input('email')));
-            $id2 = DB::table('users')
-                ->where('id', 82)
-                ->update(array('phoneNo' => $request->input('phoneNo')));
-
-
-
         if ($validator->fails()) {
             return Redirect::back()->withInput()->withErrors($validator);
         }
+           /* $i1d = DB::table('users')
+                ->where('id', $request->input('email'))
+                ->update(array('email' => $request->input('email')));
+            $id2 = DB::table('users')
+                ->where('id',$request->input('email'))
+                ->update(array('phoneNo' => $request->input('phoneNo')));
+*/
+
+        $category = users::findOrFail($request->input('id'));
+
+        $category->email = $request->input('email');
+        $category->phoneNo = $request->input('phoneNo');
+        $category->save();
+
+
+
 
         $user = DB::table('users')->where('username', $request->input('username'))->first();
         return view('editview')->with('user', $user);
