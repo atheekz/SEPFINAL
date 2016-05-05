@@ -604,5 +604,123 @@ public function sendsubscription(){
         }
 
 }
+public function resetpass(){
 
+    return view('passreset');
+}
+
+
+    public function ressetmail(){
+        $rules = [
+
+            'email' => 'required|email|max:255',
+        ];
+        $input = Input::only(
+
+            'email'
+
+        );
+
+        $validator = Validator::make($input, $rules);
+
+        if ($validator->fails()) {
+            return Redirect::back()->withInput()->withErrors($validator);
+        }
+
+
+
+
+
+        if (Mail::send('email.reset', ['input' => $input], function ($message) use ($input) {
+            $message->to($input['email'])->subject('Password Reset');
+        })
+        ) {
+            //Flash::message('Thanks for signing up! Please check your email.');
+            //::message('Thanks for signing up! Please check your email.');
+            /*  Flash :: Session ("key",
+                    "('Thanks for signing up! Please check your email.");
+            */
+            //$input->session()->flash('alert-success', 'User was successful added!');
+
+            return Redirect::back()
+                ->with('message', 'Success')
+                // ->withInput()
+                ->withErrors($validator);
+        } else {
+
+            return Redirect::back()
+                ->with('message', 'error')
+                // ->withInput()
+                ->withErrors($validator);
+
+        }
+
+
+
+
+}
+    public function finalreset(){
+
+        return view('freset');
+    }
+
+    public function resetsubmit(Request $request){
+        $rules = [
+
+            'email' => 'required|email|max:255',
+
+            'password' => 'required|confirmed|min:6',
+
+        ];
+        $input = Input::only(
+
+            'email',
+
+            'password',
+            'password_confirmation'
+
+        );
+
+        $validator = Validator::make($input, $rules);
+        //return errors
+        if ($validator->fails()) {
+            return Redirect::back()->withInput()->withErrors($validator);
+        }
+        //register user
+        $userl = users::all();
+            foreach($userl as $user){
+                if($user->email == $request->input('email')){
+                    $category = users::findOrFail($user->id);
+
+
+                    $category->password	 = $request->input('password');
+                    $category->save();
+                }
+            }
+
+
+        //mail
+
+            /* $username = $input['username'];
+              $email = $input['email'];
+             $phoneNo = $input['phoneNo'];*/
+
+            /*  Mail::send('email.verify', $confirmation_code, function($message) {
+                  $message->to(Input::get('email'), Input::get('username'))
+                      ->subject('Verify your email address');
+              });*/
+
+                //Flash::message('Thanks for signing up! Please check your email.');
+                //::message('Thanks for signing up! Please check your email.');
+                /*  Flash :: Session ("key",
+                        "('Thanks for signing up! Please check your email.");
+                */
+                //$input->session()->flash('alert-success', 'User was successful added!');
+                //redirect with sucess
+                return Redirect::back()
+                    ->with('message', 'Success')
+                    // ->withInput()
+                    ->withErrors($validator);
+
+    }
 }

@@ -80,7 +80,7 @@
                                 <i class="fa fa-btn fa-user"></i> Login
                             </button>
                         </div>
-
+                            <a href="resetpass">Forgotten your password?</a>
                     </form>
 
 
