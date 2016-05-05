@@ -27,8 +27,8 @@
                     <br>
                 </td>
                 <td>
-                    <a class="btn btn-danger" href="{{url('deleteImage'.$image->id)}}"> Delete Image </a>
-                    <a class="btn btn-primary" href="{{url('editImage'.$image->id)}}">Edit Image</a>
+                    <a class="btn btn-danger" href="{{url('deleteImage/'.$image->id)}}"> Delete Image </a>
+                    <a class="btn btn-primary" href="{{url('editImage/'.$image->id)}}">Edit Image</a>
                 </td>
 
             </tr>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @if($res->count()>0)
+
 
     <center>
         <div class="panel panel-success">
@@ -12,13 +12,10 @@
             <div class="panel-body">
                 Image Succesfully Deleted !
                 <h1 class="grid2">
-                    <a href="{{url('/home')}}" class="label label-success">Go Back to Home </a>
+                    <a href="{{url('/homeF')}}" class="label label-success">Go Back to Home </a>
 
                 </h1>
             </div>
         </div>
     </center>
-    @else
-        {{"error could not delete image"}}
-
 @endsection

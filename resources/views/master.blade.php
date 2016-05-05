@@ -341,6 +341,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<li><a class="color5" href="{{'/about'}}">About Us</a></li>
 			<li ><a class="color6" href="{{url('contact')}}">Contact Us</a></li>
 
+				<?php elseif ((Session::get('username'))=='admin123456'): ?>
+				<li><a class="color" href="{{url('addcat')}}">Categories</a></li>
+				<li><a class="color3" href="{{url('a_customlist')}}">Customized Request</a></li>
+
+
 				<?php else: ?>
 
 				<li><a class="color" href="{{url('categories')}}">Categories</a></li>
