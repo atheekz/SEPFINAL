@@ -555,16 +555,12 @@
                 <p class="quick_desc"> {{ $data->quick_overview }}</p>
                 <div class="wish-list">
                     <ul>
-                        <li class="wish"><a href="#"><span class="glyphicon glyphicon-check" aria-hidden="true"></span>Add to Wishlist</a></li>
+                        <li class="wish"><a href="/wishlist/add/{{$data->id}}"><span class="glyphicon glyphicon-check" aria-hidden="true"></span>Add to Wishlist</a></li>
                         <li class="compare"><a href="#"><span class="glyphicon glyphicon-resize-horizontal" aria-hidden="true"></span>Add to Compare</a></li>
                     </ul>
                 </div>
                 <div class="quantity">
-                    <div class="quantity-select">
-                        <div class="entry value-minus">&nbsp;</div>
-                        <div class="entry value"><span>1</span></div>
-                        <div class="entry value-plus active">&nbsp;</div>
-                    </div>
+                   
                 </div>
                 <!--quantity-->
                 <script>
@@ -579,8 +575,9 @@
                     });
                 </script>
                 <!--quantity-->
-
-                <a href="#" class="add-to item_add hvr-skew-backward">Add to cart</a>
+				@if($finalcart->count()==0)
+                <a href="/cart/add/{{$data->id}}" class="add-to item_add hvr-skew-backward">Add to cart</a>
+				@endif
                 <div class="clearfix"> </div>
             </div>
 
@@ -592,7 +589,7 @@
                 <ul class="nav tabs">
                     <li class="active"><a href="#tab1" data-toggle="tab">Product Description</a></li>
                     <li class=""><a href="#tab2" data-toggle="tab">Additional Information</a></li>
-                    <li class=""><a href="#tab3" data-toggle="tab">Reviews</a></li>
+                    <li class=""><a href="/painting/addcomment" data-toggle="tab">Reviews</a></li>
                 </ul>
             </nav>
             <div class="tab-content one">
