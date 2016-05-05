@@ -511,7 +511,7 @@
             <div class="flexslider">
                 <ul class="slides">
                     <li data-thumb="images/si.jpg">
-                        <div class="thumb-image"> <img src={{ asset('images/mainlbanner.jpg') }} data-imagezoom="true" class="img-responsive"> </div>
+                        <div class="thumb-image"> <img src={{ asset($data->image_path) }} data-imagezoom="true" class="img-responsive"> </div>
                     </li>RATE THIS PAINTING</br>
 
                     <form id="ratingsForm">

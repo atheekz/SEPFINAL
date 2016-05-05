@@ -2,46 +2,48 @@
 
 @section('content')
 
-    <script>
-        function initialize(){
-            var canvas = document.getElementById("canvas");
-            var ctx = canvas.getContext("2d");
+        <script>
+            function initialize(){
+                var canvas = document.getElementById("canvas");
+                var ctx = canvas.getContext("2d");
 
-            var image=new Image();
+                var image=new Image();
 
-            image.src = "{{$crequest->code}}";
+                image.src = "{{$crequest->code}}";
 
-            //alert(test);
+                //alert(test);
 
-            ctx.drawImage(image, 0, 0);
-        }
+                ctx.drawImage(image, 0, 0);
+            }
 
-        function drawImage($test){
+            function drawImage($test){
 
-            //ReDrawing
-
-
-            var test = $test;
+                //ReDrawing
 
 
+                var test = $test;
 
-            var canvas = document.getElementById("canvas");
-            var ctx = canvas.getContext("2d");
 
-            var image=new Image();
 
-            image.src = test;
+                var canvas = document.getElementById("canvas");
+                var ctx = canvas.getContext("2d");
 
-            //alert(test);
+                var image=new Image();
 
-            ctx.drawImage(image, 0, 0);
-        }
+                image.src = test;
 
-        function back(){
-            window.location='customlist';
-        }
+                //alert(test);
 
-    </script>
+                ctx.drawImage(image, 0, 0);
+            }
+
+            function back(){
+                window.location='customlist';
+            }
+
+        </script>
+
+
     <div class="bottom-grids collections">
         <div class="container">
             <div class="col-md-9 bottom-grids-left">
@@ -62,16 +64,10 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-9 bottom-grids-left">Heading : </div>
-                    <div class="col-md-3 bottom-grids-right"><input contenteditable="false" type="text" value="{{$crequest->heading}}"></div>
+                    <div class="col-md-3 bottom-grids-right"><input contenteditable="false" type="text" value="{{$crequest->heading}}" readonly></div>
                 </div>
-                <div class="form-group"><div class="col-md-9 bottom-grids-left">Text : </div><div class="col-md-3 bottom-grids-right"><input contenteditable="false" type="text" value="{{$crequest->text}}"></div></div>
-                <div class="form-group"><div class="col-md-9 bottom-grids-left">Color : </div><div class="col-md-3 bottom-grids-right"><input contenteditable="false" type="text" value="{{$crequest->color}}"></div></div>
-
-                <ul class="nav nav-pills" role="tablist">
-                    <li role="presentation"><a href="{{url('a_customlist')}}">Back</a></li>
-                </ul>
-
-
+                <div class="form-group"><div class="col-md-9 bottom-grids-left">Text : </div><div class="col-md-3 bottom-grids-right"><input contenteditable="false" type="text" value="{{$crequest->text}}" readonly></div></div>
+                <div class="form-group"><div class="col-md-9 bottom-grids-left">Color : </div><div class="col-md-3 bottom-grids-right"><input contenteditable="false" type="text" value="{{$crequest->color}}" readonly></div></div>
 
             </div>
         </div>
@@ -81,21 +77,22 @@
     <div class="clearfix"></div>
 
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
 
 
-    <div >
-        <form method="POST" action="{{url('custom/do-upload')}}" class="dropzone" id="addImages">
-            <input type="hidden" value="{{($crequest->id)}}" id="cat_id" name="cat_id">
-        </form>
 
-        {{ csrf_field() }}
+        <?php if (!($crequest->status=='Completed')): ?>
 
-        <ul class="nav nav-pills" role="tablist">
-            <li role="presentation"><a href="{{url('addcat/list')}}">Back</a></li>
-        </ul>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
+            <div >
+                <form method="POST" action="{{url('custom/do-upload')}}" class="dropzone" id="addImages">
+                    <input type="hidden" value="{{($crequest->id)}}" id="cat_id" name="cat_id">
+                </form>
 
-    </div>
+                {{ csrf_field() }}
+
+
+            </div>
+        <?php endif; ?>
 
     <div class="col-md-3 item-grid simpleCart_shelfItem">
         <div class=" mid-pop">
@@ -138,6 +135,10 @@
 
             </div>
         </div>
+
+        <ul class="nav nav-pills" role="tablist">
+            <li role="presentation"><a href="{{url('a_customlist')}}">Back</a></li>
+        </ul>
     </div>
 
 @stop
