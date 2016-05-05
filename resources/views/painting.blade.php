@@ -629,6 +629,8 @@
         </div>
         <!---->
     </div>
+
+
     <!----->
 
     <div class="col-md-3 product-bottom product-at">
@@ -661,6 +663,9 @@
 
             </div>
     <div class="clearfix"> </div>
+    <ul class="nav nav-pills" role="tablist">
+        <li role="presentation"><a href="{{url('category/view-cat/' .$id)}}">Back</a></li>
+    </ul>
 </div>
 </div>
 <!--brand-->
@@ -669,6 +674,8 @@
 </div>
 
 </div>
+
+
 
 <script>
     // Can also be used with $(document).ready()
