@@ -575,9 +575,9 @@
                     });
                 </script>
                 <!--quantity-->
-				@if($finalcart->count()==0)
+				
                 <a href="/cart/add/{{$data->id}}" class="add-to item_add hvr-skew-backward">Add to cart</a>
-				@endif
+
                 <div class="clearfix"> </div>
             </div>
 

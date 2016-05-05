@@ -31,7 +31,8 @@ class product extends Controller
 
         $product_b =DB::table('res')->where('ImageID', $product_id)->first();
         $data = DB::table('imagedetails')->where('id', $product_id)->first();
-        return view('painting')->with('data', $data)->with('testproduct', $product_b)->with('id',$product_id);
+        $finalcart= DB::table('imagedetails')->where('id', $product_id)->first();
+        return view('painting')->with('data', $data)->with('testproduct', $product_b)->with('id',$product_id)->with('finalcart',$finalcart);
         //\Return View
 
 
