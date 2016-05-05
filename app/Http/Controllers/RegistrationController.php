@@ -343,6 +343,11 @@ $i = users::all();
          if($item->username==$input['username'] && $item->password==$input['password']) {
              $tcheck=true;
              if($item->username=='admin123456' && $item->password=='admin123456'){
+                 Session::set('facebook', 'true');
+                 $i='http://www.propertyzaar.com/images/default-user.png';
+                 Session::set('image', $i);
+                 Session::set('username', $input['username']);
+                 Session::set('userid', $item->id);
                  return view('adminmain');
              }
          }
