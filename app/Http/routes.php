@@ -89,8 +89,11 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
     Route::get('/adminsubscribe', 'RegistrationController@AdminSubscription');//admin Subscription
     Route::post('/addsub', 'RegistrationController@addsub');//contact is mail
     Route::get('searche', 'RegistrationController@search_email');
-    ////get login
-
+    ////get login    resetsubmit
+    Route::post('/ressetmail', 'RegistrationController@ressetmail');
+    Route::post('/resetsubmit', 'RegistrationController@resetsubmit');
+    Route::get('/freset', 'RegistrationController@finalreset');
+    Route::get('/resetpass', 'RegistrationController@resetpass');
     Route::post('/sendsub', 'RegistrationController@sendsubscription');//send subscription
     Route::get('/sign_out', 'RegistrationController@signout');//sign out
     Route::get('/contact', 'Contact@view');//Contact us view
@@ -108,7 +111,9 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
     Route::get('/', function () {
         return view('homeF');
     });
-
+    Route::get('/checkout', function () {
+        return view('checkout');
+    });
 //confirmation using the verification code
     Route::get('register/verify/{confirmationCode}', [
         'as' => 'confirmation_path',

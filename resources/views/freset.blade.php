@@ -1,11 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Atheek
- * Date: 3/13/2016
- * Time: 10:25 AM
- */?>
-
 @extends('master')
 <?php /*<script src={{ asset('ajax/register.js') }} type="text/javascript"></script>*/
 ?>
@@ -108,26 +100,16 @@
 <script>
     jQuery( document ).ready(function( $ ) {
 
-        //  $("#dialogmessage").show();
         $(function() {
             $( "#dialogmessage" ).dialog({
                 modal: true,
                 buttons: {
                     Ok: function() {
                         $( this ).dialog( "close" );
-                        window.location.replace("http://localhost:8080/laravel/blog/public/");
-
                     }
                 }
             });
         });
-
-$('#id').hide();
-
-
-
-
-
 
     });
 </script>
@@ -143,21 +125,22 @@ $('#id').hide();
     }(document, 'script', 'facebook-jssdk'));</script>
 <!--fb like :share -->
 
+<div class="banner-top">
 
-<div class="container">
+
 
     <!-- new-->
 
     @if(session('message')=='Success')
 
 
-        <div id="dialogmessage" title="Thanks for signing up">
+        <div id="dialogmessage" title="Thank you">
             <p>
                 <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
-                Please check your
+                you have successfully reset your
             </p>
             <p>
-                <b>email</b>. A confirmation email has been sent to your address.
+                <b>password</b>
             </p>
         </div>
     @endif
@@ -165,60 +148,30 @@ $('#id').hide();
     @if(session('message')=='error')
 
 
-        <div id="dialogmessage" title=" Thanks for signing up">
+        <div id="dialogmessage" title=" Error">
             <p>
                 <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
                 sorry we couldn't send an
             </p>
             <p>
-                <b>email</b> to your addressPlease try again later or contact customer service.
+                <b>email</b> to our server try again later or contact customer service.
             </p>
         </div>
         @endif
                 <!-- new-->
 
 
-
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Update Details</div>
+                    <div class="panel-heading">Reset Password</div>
                     <div class="panel-body">
-                        <form  role="form" method="POST" action="{{ url('editview2') }}" > <? // action="{{ url('editview2') }}" ?>
+                        </div>
+                        <form  role="form" method="POST" action="{{ url('resetsubmit') }}">
 
                             {!! csrf_field() !!}
 
-                            <div class="login-mail">
 
-                                <div class="{{ $errors->has('username') ? ' has-error' : '' }}">
-                                    <i style="float:left;position: relative;"  class="glyphicon glyphicon-user"></i>
-
-                                    <input id="username" type="text" placeholder="Username"  name="username" value="{{ $user->username }}" readonly >
-                                    @if ($errors->has('username'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                    @endif
-
-                                </div>
-
-                            </div>
-
-                            <!-- <?php /*   <div class="login-mail">
-
-                                <div class="{{ $errors->has('name') ? ' has-error' : '' }}">
-                                    <i style="float:left;position: relative;"  class="glyphicon glyphicon-user"></i>
-
-                                    <input id="name" type="text" placeholder="Name" name="name" value="{{ old('name') }}" >
-                                    @if ($errors->has('name'))
-                                            <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                        @endif
-
-                                </div>
-
-                            </div> */ ?> -->
 
 
                             <div class="login-mail">
@@ -227,7 +180,7 @@ $('#id').hide();
 
 
                                     <i style="float:left;position: relative;" class="glyphicon glyphicon-envelope"></i>
-                                    <input id="email" type="email" placeholder="Email" name="email" value="{{ $user->email }}">
+                                    <input id="email" type="email" size="100" placeholder="Email" name="email" value="{{ old('email') }}">
 
                                     @if ($errors->has('email'))
                                         <span class="help-block">
@@ -239,34 +192,38 @@ $('#id').hide();
 
                             </div>
                             <div class="login-mail">
-                                <div class="{{ $errors->has('phoneNo') ? ' has-error' : '' }}">
-                                    <i style="float:left;position: relative;" class="glyphicon glyphicon-phone"></i>
-                                    <input id="phoneNo" type="text" placeholder="Phone Number" maxlength="11" name="phoneNo" value="{{ $user->phoneNo }}">
 
-                                    @if ($errors->has('phoneNo'))
+                                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                    <i class="glyphicon glyphicon-lock"></i>
+                                    <input id="pass" type="password" placeholder="Password" name="password">
+
+                                    @if ($errors->has('password'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('phoneNo') }}</strong>
+                                        <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="login-mail">
-                                <div class="{{ $errors->has('id') ? ' has-error' : '' }}">
 
-                                    <input id="id" type="text" placeholder="User ID" maxlength="11" name="id" value="{{ $user->id }}">
+                                <div  class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                                    <i class="glyphicon glyphicon-lock"></i>
 
-                                    @if ($errors->has('id'))
+
+                                    <input id="pass_con" type="password"  placeholder="Confirm Password " name="password_confirmation">
+
+                                    @if ($errors->has('password_confirmation'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('id') }}</strong>
+                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
                             <div id="final_submit">
-                                <input type="submit" value="Update" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i>
-                                </input>
+                                <button type="submit"  class="btn btn-primary">
+                                    <i class="fa fa-btn fa-user"></i> Submit
+                                </button>
                             </div>
 
                         </form>
@@ -275,30 +232,14 @@ $('#id').hide();
 
 
                     </div>
+
+
+
+                    <!--facebook -->
+                    <!--facebook-->
                 </div>
             </div>
-        </div>
-
-        <!--facebook -->
-        <div id="login_refresh">
-
-            <?php if ((Session::get('facebook')=='true')): ?>
-            <div id="lofig"><p id="header_color2">Welcome ,<?php echo (Session::get('username')) ;?></p><li><div id="header_color">
-                        <img src=<?php echo (Session::get('image')); ?> height="42" width="42" style = "border-radius:20px;" >
-                    </div></li><li><div id="header_color"><a href="../sign_out">signout</a></div></li>
-                <?php else: ?>
-                <div id="header_color"><a onclick="login()"> log in with facebook</a></div>
-                <?php// check_is_logged(); ?>
-                <?php endif; ?>
-            </div>
-        </div>
-        <!--facebook-->
-</div>
-
-<!--like -->
-<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="10" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
-<!--shre-->
+            <!--like -->
+            <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="10" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+            <!--shre-->
 @stop
-
-
-
