@@ -1,4 +1,4 @@
-@extends('adminmaster')
+@extends('master')
 
 @section('content')
 
@@ -25,7 +25,7 @@
 
             </tr>
 
-
+                <input type="hidden" id="id" name="id" value="{{$det->id}}">
 
             <tr>
                 <td>Image Title</td>

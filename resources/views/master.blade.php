@@ -396,7 +396,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										  </ul>
 									  </div>
 									@endif
-								  
+
 							  <form class="form" method="POST" action="{{url('search')}}">
 								  <input type="hidden" name="_token" value="{{csrf_token()}}">
 
@@ -420,10 +420,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<!----->
 
 					<!---pop-up-box---->
-					<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
+					<!--<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
 					<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
 					<!---//pop-up-box---->
-					<div id="small-dialog" class="mfp-hide">
+				<!--	<div id="small-dialog" class="mfp-hide">
 						<div class="search-top">
 							<div class="login-search">
 								<input type="submit" value="">
@@ -431,7 +431,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<p>Shopin</p>
 						</div>
-					</div>
+					</div>-->
 					<script>
 						$(document).ready(function() {
 							$('.popup-with-zoom-anim').magnificPopup({
@@ -505,6 +505,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!--//brand-->
 	<!--//content-->
 	<!--//footer-->
+
+<?php if( ((Session::get('facebook'))=='true') &&((Session::get('username'))!='admin123456')): ?>
+
 <div class="footer">
 	<div class="footer-middle">
 		<div class="container">
@@ -555,6 +558,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="footer-bottom">
 				<div class="container">
 					<ul class="footer-bottom-top">
+
+
 
 <!-- google_translate -->					<li>
 							<div class="box">
@@ -617,6 +622,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 		</script>
 
-
+<?php endif; ?>
 </body>
 </html>
