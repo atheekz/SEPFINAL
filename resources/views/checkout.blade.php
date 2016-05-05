@@ -472,7 +472,7 @@
 </div>
 <div class="footer">
     <div class="container">
-        
+
         <!-- CMS:国际站公共cms/组件/服务器信息开始:component/systemInfo.vm -->
         <p class="host-info">icashier-12-9</p>
         <!-- CMS:国际站公共cms/组件/服务器信息结束:component/systemInfo.vm -->      </div>
