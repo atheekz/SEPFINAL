@@ -148,6 +148,12 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('viewSingleImageAdmin/{id}','nController@viewImageAdmin');
 
     Route::get('deleteImage/{id}','nController@deleteImage');
+
+    Route::get('editImage/{id}','nController@editImage');
+
+    Route::post('edit','nController@edit');
+
+
     //END-NIPUN
 });
 

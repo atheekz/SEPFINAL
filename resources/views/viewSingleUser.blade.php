@@ -1,7 +1,9 @@
-@include('adminmaster')
+@include('master')
 
 @section('content')
 
+
+@foreach($users as $u)
 
     <table class="table table-striped table-bordered table-responsive">
 
@@ -12,7 +14,7 @@
 
             </td>
             <td>
-                {{$users->id}}
+                {{$u->id}}
 
             </td>
         </tr>
@@ -22,7 +24,7 @@
 
             </td>
             <td>
-                {{$users->email}}
+                {{$u->email}}
 
             </td>
         </tr>
@@ -33,7 +35,7 @@
 
             </td>
             <td>
-                {{$users->username}}
+                {{$u->username}}
 
             </td>
         </tr>
@@ -44,14 +46,14 @@
 
             </td>
             <td>
-                <a class="btn btn-danger" href="{{url('deleteuser/'.$users->id)}}"> Delete User</a>
+                <a class="btn btn-danger" href="{{url('deleteuser/'.$u->id)}}"> Delete User</a>
 
             </td>
 
         </tr>
 
         <table>
-
+    @endforeach
 
 
 @endsection
