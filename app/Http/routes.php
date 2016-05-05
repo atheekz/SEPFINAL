@@ -163,6 +163,9 @@ Route::group(['middleware' => ['web']], function () {
     //Load Specific Category for Users
     Route::get('category/view-cat/{id}', 'PageController@viewcat2');
 
+    //Load Specific Category for Users
+    Route::get('category/details-view/{id}', 'product@show');
+
     //View and add categories (admin)
     Route::get('addcat/list', 'PageController@catlist');
 
