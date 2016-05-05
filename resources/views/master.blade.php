@@ -224,7 +224,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="container">
 		<div class="head">
 			<div class=" logo">
-				<a href="index.html"><img src={{ asset('images/logo.png') }} alt=""></a>
+				<a href="{{url('/')}}"><img src={{ asset('images/logo.png') }} alt=""></a>
 			</div>
 		</div>
 	</div>
@@ -332,7 +332,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 
         <ul class="nav navbar-nav nav_1">
+
+
 			<?php if ((Session::get('facebook'))=='true'): ?>
+
+			<?php if ((Session::get('username'))=='admin123456'): ?>
+			<li><a class="color" href="{{url('addcat/list')}}">Categories</a></li>
+			<li><a class="color3" href="{{url('a_customlist')}}">Customized Request</a></li>
+
+				<?php else: ?>
 
 			<li><a class="color" href="{{url('categories')}}">Categories</a></li>
 			<li><a class="color3" href="{{url('customlist')}}">Customized Request</a></li>
@@ -341,12 +349,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<li><a class="color5" href="{{'/about'}}">About Us</a></li>
 			<li ><a class="color6" href="{{url('contact')}}">Contact Us</a></li>
 
+
+				<?php endif; ?>
+
 				<?php else: ?>
 
 				<li><a class="color" href="{{url('categories')}}">Categories</a></li>
-				<li><a class="color3" href="{{url('a_customlist')}}">Customized Request</a></li>
 				<li><a class="color3" href="{{'/trending'}}">Trending</a></li>
-				<li><a class="color5" href="{{'/trending'}}">About Us</a></li>
+				<li><a class="color5" href="{{'/about'}}">About Us</a></li>
 				<li ><a class="color6" href="{{url('contact')}}">Contact Us</a></li>
 
 				<?php endif; ?>
@@ -367,7 +377,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul class="heart">
 
 						  <li>
-							  <?php if ((Session::get('facebook'))=='true'): ?>
+							  <?php if( ((Session::get('facebook'))=='true') &&((Session::get('username'))!='admin123456')): ?>
+
 								  @if(Session::has('flash_message'))
 									  <div class="alert alert-success">
 										  {{Session::get('flash_message')}}
@@ -383,8 +394,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											  @endforeach
 										  </ul>
 									  </div>
+									@endif
 
-								  @endif
 							  <form class="form" method="POST" action="{{url('search')}}">
 								  <input type="hidden" name="_token" value="{{csrf_token()}}">
 
@@ -408,10 +419,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<!----->
 
 					<!---pop-up-box---->
-					<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
+					<!--<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
 					<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
 					<!---//pop-up-box---->
-					<div id="small-dialog" class="mfp-hide">
+				<!--	<div id="small-dialog" class="mfp-hide">
 						<div class="search-top">
 							<div class="login-search">
 								<input type="submit" value="">
@@ -419,7 +430,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<p>Shopin</p>
 						</div>
-					</div>
+					</div>-->
 					<script>
 						$(document).ready(function() {
 							$('.popup-with-zoom-anim').magnificPopup({
@@ -493,6 +504,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!--//brand-->
 	<!--//content-->
 	<!--//footer-->
+
+<?php if( ((Session::get('facebook'))=='true') &&((Session::get('username'))!='admin123456')): ?>
+
 <div class="footer">
 	<div class="footer-middle">
 		<div class="container">
@@ -543,6 +557,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="footer-bottom">
 				<div class="container">
 					<ul class="footer-bottom-top">
+
+
 
 <!-- google_translate -->					<li>
 							<div class="box">
@@ -605,6 +621,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 		</script>
 
-
+<?php endif; ?>
 </body>
 </html>

@@ -390,6 +390,17 @@ $i = users::all();
         return view('homeF');
     }
 
+    public function redirect(){
+
+        if(Session::get('username')=='admin123456'){
+            return view('adminmain');
+        }
+        else{
+            return view('homeF');
+        }
+
+    }
+
     public function edituser_view($usename){
         $user = DB::table('users')->where('username', $usename)->first();
         return view('editview')->with('user', $user);

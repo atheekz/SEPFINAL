@@ -62,9 +62,9 @@ class nController extends Controller
     public function viewSingleUser($id)
     {
 
-        $users=User::findOrFail($id);
+        $users=DB::table('users')->where('id',$id)->get();
+        return view('viewSingleUser')->with('users',$users);
 
-        return view('/viewSingleUser')->with('users',$users);
     }
 
     public function deleteUser($id)
@@ -171,6 +171,8 @@ class nController extends Controller
 
         $image_det=DB::table('imagedetails')->where('id',$id)->first();
 
+
+
         return view('viewSingleImage')->with('image',$image)->with('image_det',$image_det);
 
     }
@@ -182,6 +184,39 @@ class nController extends Controller
         return view('deletedImage')->with('res',$res);
     }
 
+    public function editImage($id)
+    {
+
+        $details=DB::table('imagedetails')->where('id',$id)->get();
+
+        $image=DB::table('images')->where('id',$id)->get();
+
+        return view('editImage')->with('details',$details)->with('image',$image);;
+
+    }
+
+    public function edit(Request $request)
+    {
+
+
+
+        $id=$request->input('id');
+        $title=$request->input('title');
+        $overview=$request->input('overview');
+        $desc=$request->input('desc');
+        $addinfo=$request->input('addinfo');
+        $cost=$request->input('cost');
+
+
+    $result=DB::table('imagedetails')->where('id',$id)->update(array('title'=>$title,'quick_overview'=>$overview,'producut_description'=>$desc,'add_info'=>$addinfo,'cost'=>$cost));
+     return view('/editedImage')->with('result',$result);
+
+    }
+
+    public function aboutUs()
+    {
+            return view ('AboutUs');
+    }
 
 
 

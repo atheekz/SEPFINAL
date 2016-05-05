@@ -42,11 +42,11 @@
                             <input type="hidden" name="ImageName" id="ImageName" value="{{$res->file_name}}">
                             <input type="hidden" name="ImagePath" id="ImagePath" value="{{$res->file_path}}">
                             <input type="hidden" name="Count" id="Count" value="{{$res->Count}}">
-                            <button class="btn btn-primary">Reserve Image</button>
+                            <!--<button class="btn btn-primary">Reserve Image</button>-->
 
                         </form>
 
-                        <a class="btn btn-primary" href="{{url('viewimage/'.$res->id)}}">View Image Details</a>
+                        <a class="btn btn-primary" href="{{url('category/details-view/'.$res->id)}}">View Image Details</a>
 
 
                     </td>

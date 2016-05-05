@@ -43,9 +43,9 @@ Route::get('home', function () {
    }
 });*/
 
-Route::get('users', function () {
-   $users=App\users::find(1);
-   echo "Hellow ".$users->Username;
+Route::get('/test', function () {
+  $users=App\User::find(83);
+   echo $users->username;
 }); 
 
 
@@ -89,11 +89,9 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
     Route::get('/adminsubscribe', 'RegistrationController@AdminSubscription');//admin Subscription
     Route::post('/addsub', 'RegistrationController@addsub');//contact is mail
     Route::get('searche', 'RegistrationController@search_email');
-    ////get login    resetsubmit
-    Route::post('/ressetmail', 'RegistrationController@ressetmail');
-    Route::post('/resetsubmit', 'RegistrationController@resetsubmit');
-    Route::get('/freset', 'RegistrationController@finalreset');
-    Route::get('/resetpass', 'RegistrationController@resetpass');
+
+    ////get login
+
     Route::post('/sendsub', 'RegistrationController@sendsubscription');//send subscription
     Route::get('/sign_out', 'RegistrationController@signout');//sign out
     Route::get('/contact', 'Contact@view');//Contact us view
@@ -108,19 +106,35 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
     Route::post('/editview2','RegistrationController@update');
     Route::get('app/rating_ajax/{val}/{id}', 'product@rating');//raing controller using ajax
     Route::get('/map', 'map@view');
-    Route::get('/', function () {
-        return view('homeF');
-    });
-    Route::get('/checkout', function () {
-        return view('checkout');
-    });
+
+    Route::get('/', 'RegistrationController@redirect');
+
+
 //confirmation using the verification code
     Route::get('register/verify/{confirmationCode}', [
         'as' => 'confirmation_path',
         'uses' => 'RegistrationController@confirm'
     ]);
 
+
+//cart
+Route::get('/cart', 'CartController@show');
+Route::get('/cart/add/{imageId}', 'CartController@add');
+
+Route::get('/cartf', 'CartController@showCart');
+Route::get('cart/removeItem/{id}','CartController@delete');
+
+Route::get('/Wishlist/add/{id}','wishlistController@addWish');
+Route::get('/Wishlist','wishlistController@showWish');
+Route::get('/Wishlist/remove/{id}','wishlistController@removeWish');
+
+Route::get('/painting/comments/{imageId}','CommentController@showComments');
+Route::post('/painting/comments/add/{imageId}','CommentController@addComment');
+Route::get('/painting/comments/edit/{commentId}','CommentController@editComment');
+Route::get('/painting/comments/delete/{commentId}','CommentController@editComment');
+
 });
+
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
@@ -153,6 +167,14 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('viewSingleImageAdmin/{id}','nController@viewImageAdmin');
 
     Route::get('deleteImage/{id}','nController@deleteImage');
+
+    Route::get('editImage/{id}','nController@editImage');
+
+    Route::post('edit','nController@edit');
+
+    Route::get('about','nController@aboutUs');
+
+
     //END-NIPUN
 });
 
@@ -167,6 +189,12 @@ Route::group(['middleware' => ['web']], function () {
 
     //Load Specific Category for Users
     Route::get('category/view-cat/{id}', 'PageController@viewcat2');
+
+    //Load Specific Category for Users
+    Route::get('category/details-view/{id}', 'product@show');
+
+    //Load Specific Category for Users
+    Route::get('category/a_details/{id}', 'product@a_show');
 
     //View and add categories (admin)
     Route::get('addcat/list', 'PageController@catlist');
@@ -199,6 +227,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('image/delete/{id}', 'PageController@deleteimage');
 
     Route::get('customlist/view/{id}', 'PageController@viewreq');
+
+    Route::get('customlist/delete/{id}', 'PageController@delreq');
+
     Route::get('a_customlist/view/{id}', 'PageController@a_viewreq');
 
 

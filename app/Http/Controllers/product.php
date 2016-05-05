@@ -31,10 +31,19 @@ class product extends Controller
 
         $product_b =DB::table('res')->where('ImageID', $product_id)->first();
         $data = DB::table('imagedetails')->where('id', $product_id)->first();
-        return view('painting')->with('data', $data)->with('testproduct', $product_b);
+        return view('painting')->with('data', $data)->with('testproduct', $product_b)->with('id',$product_id);
         //\Return View
 
 
+    }
+
+    public function a_show($product_id)
+    {
+
+        $product_b =DB::table('res')->where('ImageID', $product_id)->first();
+        $data = DB::table('imagedetails')->where('id', $product_id)->first();
+        return view('painting_a')->with('data', $data)->with('testproduct', $product_b);
+        //\Return View
     }
 
 

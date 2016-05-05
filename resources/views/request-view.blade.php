@@ -72,5 +72,52 @@
                 </ul>
             </div>
         </div>
+
+        @if($crequest->Status=='Completed')
+
+            <div class="col-md-3 item-grid simpleCart_shelfItem">
+                <div class=" mid-pop">
+                    <div class="pro-img">
+                        <div id="image">
+                            <ul>
+                                <li><img src="{{ URL::asset($crequest->file_path) }}" class="img-responsive" alt=""></li>
+                            </ul>
+                        </div>
+                        <div class="zoom-icon ">
+                            <a class="picture" href="{{ URL::asset($crequest->file_path) }}" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
+                            <!--<a href="#"><i class="glyphicon glyphicon-menu-right icon"></i></a>-->
+                        </div>
+                    </div>
+                    <div class="mid-1">
+
+
+
+                        <div class="women">
+                            <div class="women-top">
+                                <span>{{ $crequest->heading }}</span>
+
+                            </div>
+                        </div>
+                        <!--<div class="img item_add">
+                                            <a href="{{ url('category/view-cat/' .$crequest->id) }}"><img src="images/ca.png" alt=""></a>
+                                        </div> -->
+                        <div class="clearfix"></div>
+
+                        <div class="mid-2">
+
+                            <!--<div class="block">
+                                <a href="{{ url('image/delete/' .$crequest->id) }}">Delete</a>
+                            </div>-->
+
+                            <div class="clearfix"></div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+            @endif
+
     </div>
 @stop

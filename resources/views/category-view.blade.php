@@ -34,7 +34,7 @@
                             </div>
                             <div class="zoom-icon ">
                                 <a class="picture" href="{{ URL::asset($images->file_path) }}" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-                                <!--<a href="#"><i class="glyphicon glyphicon-menu-right icon"></i></a>-->
+                                <a href="{{url('category/a_details/' .$images->id)}}"><i class="glyphicon glyphicon-menu-right icon"></i></a>
                             </div>
                         </div>
                         <div class="mid-1">
@@ -117,7 +117,7 @@
                     </div>
 
 
-                    <button class="btn btn-lg btn-primary">Update</button>
+                        <button class="btn btn-lg btn-primary">Update</button>
 
 
 

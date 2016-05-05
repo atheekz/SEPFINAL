@@ -3,9 +3,10 @@
 @section('content')
 <div class="content-mid">
 
-    <h3>Latest Items</h3>
+    <h3>Trending Items</h3>
     <label class="line"></label>
 </div>
+
 <table class="table table-striped table-bordered table-responsive">
     <tr>
         <th> </th>

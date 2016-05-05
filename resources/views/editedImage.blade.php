@@ -10,9 +10,9 @@
                 <h3 class="panel-title">Notification</h3>
             </div>
             <div class="panel-body">
-                Image Succesfully Deleted !
+                Image Succesfully Edited !
                 <h1 class="grid2">
-                    <a href="{{url('/homeF')}}" class="label label-success">Go Back to Home </a>
+                    <a href="{{url('/')}}" class="label label-success">Go Back to Home </a>
 
                 </h1>
             </div>

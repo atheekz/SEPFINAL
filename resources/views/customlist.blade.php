@@ -46,7 +46,7 @@
 
 
                                     </td>
-                                <td>{{$cr->status}}</td></tr>
+                                <td>{{$cr->Status}}</td></tr>
                             @endforeach
                             </tbody>
 

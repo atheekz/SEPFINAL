@@ -280,6 +280,22 @@ class PageController extends Controller {
         return redirect()->back();
     }
 
+    public function delreq($id)
+    {
+
+
+        //get category
+        $cr = customrequest::findOrFail($id);
+
+
+        //delete physical image
+
+        //delete category and images from database.
+        $cr->delete();
+
+        return redirect()->back();
+    }
+
     //delete single image
     public function deleteimage($id)
     {
