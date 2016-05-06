@@ -87,7 +87,7 @@
                 <h3 class="panel-title">Order total</h3>
                 <a href="#" class="i-icon i-icon-refresh refresh-price" id="j-refresh-price"></a>
                 <span class="fn-hide refresh-price-tip">Refresh Price</span>
-                <em class="order-total-amount">US $2.84</em>
+                <em class="order-total-amount">LKR {{$total}}</em>
             </div>
 
 
@@ -96,7 +96,7 @@
                 <dd>
                     <span class="order-item-l"><span class="order-no-title">Order NO.</span> <span class="order-no" data-tradeno="2016050532007101160005246384">75066534438516</span></span>
                     <span class="order-item-l order-item-title" title="Wholesale Sport Wristband Brace Wrap Bandage Gym Strap Running Sports Safety Wrist Support Padel Pulseira Badminton Wrist Band">Wholesale Sport Wristband Brace Wrap Bandage Gym Strap Running Sp...</span>
-                    <span class="order-item-r">US $2.84</span>
+                    <span class="order-item-r">LKR {{$total}}</span>
                 </dd>
 
             </dl>

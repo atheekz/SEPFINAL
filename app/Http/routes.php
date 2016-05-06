@@ -109,7 +109,9 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
     Route::get('/map', 'map@view');
 
     Route::get('/', 'RegistrationController@redirect');
-    Route::get('checkout', 'RegistrationController@checkout');
+    Route::get('checkout/{total}', 'RegistrationController@checkout');
+    Route::get('/emptycart', 'RegistrationController@emptycart');
+
 
 //confirmation using the verification code
     Route::get('register/verify/{confirmationCode}', [
@@ -122,9 +124,11 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('/cart', 'CartController@show');
 Route::get('/cart/add/{imageId}', 'CartController@add');
 
-Route::get('/cartf', 'CartController@showCart');
+Route::get('/totalcart', 'CartController@showCart');
 Route::get('cart/removeItem/{id}','CartController@delete');
 
+
+ Route::get('/removeItem/{id}','CartController@removeItem');
 Route::get('/Wishlist/add/{id}','wishlistController@addWish');
 Route::get('/Wishlist','wishlistController@showWish');
 Route::get('/Wishlist/remove/{id}','wishlistController@removeWish');

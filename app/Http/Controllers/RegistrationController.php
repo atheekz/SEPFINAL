@@ -724,8 +724,13 @@ public function resetpass(){
 
     }
 
-    public function checkout(){
+    public function checkout($total){
 
-        return view ('checkout');
+        return view ('checkout')->with('total',$total);
+    }
+    public function emptycart(){
+        DB::table('cart')->delete();
+        return view('homef');
+
     }
 }

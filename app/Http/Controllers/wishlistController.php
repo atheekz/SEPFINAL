@@ -13,7 +13,7 @@ use DB;
 class wishlistController extends Controller
 {
 	public function addWish($id){
-		 $data = DB::table('imagedetails')->where('id', $id)->first();
+		 /*$data = DB::table('imagedetails')->where('id', $id)->first();
 
 		  $finalwishlist = new  finalwishlist();
 
@@ -24,7 +24,7 @@ class wishlistController extends Controller
         $finalwishlist->path =$data->image_path;
          $finalwishlist->save();
 
-         return view('painting')->with('finalcart',$finalwishlist)->with('data',$data);
+         return view('painting')->with('finalcart',$finalwishlist)->with('data',$data);*/
 	}
     public function showWish(){
     	 $finalwishlist = finalwishlist::all()->where('user_id',Session::get('userid'));

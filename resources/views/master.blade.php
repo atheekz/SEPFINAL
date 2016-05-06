@@ -409,15 +409,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								  </form>
 						<?php endif; ?>
 					</ul>
+					<?php if( ((Session::get('facebook'))=='true') || ((Session::get('google'))=='true')): ?>
+
 					<div class="cart box_1">
-						<!-- <a href="checkout.html">
+						<a href="checkout.html">
                              <h3> <div class="total">
-                                     <span class="simpleCart_total"></span></div>
-                                 <img src="images/cart.png" alt=""/></h3>
+                                    </div>
+                                 <a href="{{url('totalcart')}}"><img src={{asset ('images/cart.png')}} alt=""/></a></h3>
                          </a>
-                         <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>-->
+                         <p><a href="{{url('emptycart')}}" class="simpleCart_empty">Empty Cart</a></p>
 
 					</div>
+					<?php endif; ?>
 					<div class="clearfix"> </div>
 
 					<!----->
