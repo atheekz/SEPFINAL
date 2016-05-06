@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Mail;
 use App\subscription;
-
+use App\Imagedetail;
 //use DB;
 require('textlocal.php');
 
@@ -291,6 +291,7 @@ if($input['val_option']=='email') {
         session()->forget('username');
         session()->forget('id');
         session()->forget('userid');
+        session()->forget('totalprice');
 
       //  return Redirect::back();
 
@@ -363,6 +364,18 @@ $i = users::all();
 
 
         if($tcheck){
+          //  $i = imagedetails::findOrFail($item->id);
+            $totalcost=0.0;
+
+                $results = DB::select("select * from imagedetails where ? = ?", array('user_id', $item->id));
+
+                foreach($results as $run)
+                {
+                    $totalcost=$totalcost+$run->price;
+                }
+                Session::set('totalprice', $totalcost);
+
+
             Session::set('facebook', 'true');
             $i='http://www.propertyzaar.com/images/default-user.png';
             Session::set('image', $i);

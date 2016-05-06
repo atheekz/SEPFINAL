@@ -71,6 +71,9 @@ class CartController extends Controller
     }
     public function removeItem($id){
 
+        $data = DB::table('cart')->where('id', $id)->where('user_id', Session::get('userid'))->first();
+        $total1 =(Session::get('totalprice')) - $data->price;
+        Session::set('totalprice',$total1);
         finalCart::destroy($id);
         return redirect('/cart');
     }
@@ -97,7 +100,9 @@ class CartController extends Controller
         /* foreach($items as $item){
             // $total+=$item->product->price;
          }
- */
+
+ */    $total1 =Session::get('totalprice')+$data->cost;
+        Session::set('totalprice',$total1);
         return view('cart')->with('finalcart',$finalCart1);
 
     }

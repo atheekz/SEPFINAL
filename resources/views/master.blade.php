@@ -414,7 +414,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="cart box_1">
 						<a href="checkout.html">
                              <h3> <div class="total">
-                                    </div>
+								<?php if((Session::get('totalprice'))==0)
+									 echo 'LKR 0.00 ';
+									 else{
+										 echo 'LKR '.(Session::get('totalprice'));
+									 }?> </div>
                                  <a href="{{url('totalcart')}}"><img src={{asset ('images/cart.png')}} alt=""/></a></h3>
                          </a>
                          <p><a href="{{url('emptycart')}}" class="simpleCart_empty">Empty Cart</a></p>
