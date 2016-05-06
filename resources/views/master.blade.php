@@ -278,8 +278,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><div id="header_color"><a href="./login"> log in</a></div></li>
 				<li><a href="register">Register</a></li>
 				<?php endif; ?>
-				<li></li>
-					</ul>
+				<li>
+
+
+
+			</ul>
 		</div>
 		</div>
 </div>
@@ -298,11 +301,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	@endif
 			<div class="col-sm-5 header-social">
 					<ul >
-						<li><a href="#"><i></i></a></li>
+
 						<li><a href="#"><i class="ic1"></i></a></li>
 						<li><a href="#"><i class="ic2"></i></a></li>
 						<li><a href="#"><i class="ic3"></i></a></li>
-						<li><a href="#"><i class="ic4"></i></a></li>
+						<li>
+							<?php
+							date_default_timezone_set("Asia/Colombo");
+							echo ' <b style="color: #00BFF0;left:10%;float: left;">The time is ' . date("h:i:sa").'</b>';
+							?></i>
+						</li>
 					</ul>
 
 			</div>
@@ -350,6 +358,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<li ><a class="color6" href="{{url('contact')}}">Contact Us</a></li>
 
 
+
 				<?php endif; ?>
 
 				<?php else: ?>
@@ -359,6 +368,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><a class="color5" href="{{url('/about')}}">About Us</a></li>
 				<li ><a class="color6" href="{{url('contact')}}">Contact Us</a></li>
 
+				<li>
+					<?php
+					date_default_timezone_set("Asia/Colombo");
+					echo ' <b style="color: #00BFF0;left:10%;float: left;">The time is ' . date("h:i:sa").'</b>';
+					?></li>
 				<?php endif; ?>
         </ul>
 

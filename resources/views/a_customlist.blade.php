@@ -33,7 +33,7 @@
                                 <td>{{$cr->heading}}</td>
                                 <td><a href="{{ url('a_customlist/view/' .$cr->id) }}">View</a></td>
 
-                                <td>{{$cr->status}}</td></tr>
+                                <td>{{$cr->Status}}</td></tr>
                         @endforeach
                         </tbody>
 
