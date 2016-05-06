@@ -576,7 +576,7 @@
                 </script>
                 <!--quantity-->
 				
-                <a href="/cart/add/{{$data->id}}" class="add-to item_add hvr-skew-backward">Add to cart</a>
+                <a href="{{ url('cart/add/'.$data->id) }}" class="add-to item_add hvr-skew-backward">Add to cart</a>
 
                 <div class="clearfix"> </div>
             </div>
